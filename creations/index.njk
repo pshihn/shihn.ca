@@ -1,20 +1,21 @@
 ---
 layout: base-layout.njk
 pagination:
-  data: collections.post
+  data: collections.creation
   size: 500
   reverse: true
-  alias: posts
+  alias: creations
 ---
 <style>
 main {
   padding: 16px 8px;
-  max-width: 616px;
+  max-width: 690px;
   margin: 0 auto;
   background: none;
   color: white;
   box-sizing: border-box;
   box-shadow: none;
+  text-align: center;
 }
 @media(max-width: 600px) {
   main {
@@ -23,21 +24,18 @@ main {
 }
 </style>
 CREATIONS!
-{% for post in posts %}
-<a class="card-link" href="{{ post.url | url }}">
-  <article class="cardpost horizontal layout" style="--card-bg:{{ post.data.themebg }}; --card-fg:{{ post.data.themefg }};">
-    <div class="card-image" style="background-image: url({{ post.data.image }});">
-      <div class="card-gradient"></div>
-    </div>
-    <div class="flex card-content">
+<div>
+{% for post in creations %}
+  <article class="creation-card">
+    <section class="creation-card-image" style="background-image: url({{ post.data.image }});">
+      <svg>
+        <path class="creation-buffer-path" d="M 0,120 h 300 v -20 z"></path>
+      </svg>
+    </section>
+    <section class="creation-card-body">
       <div class="card-title">{{ post.data.title }}</div>
-      <div class="card-description">
-        {{ post.data.description }}
-      </div>
-      <div class="horizontal layout center card-footer">
-        <time class="flex" datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
-      </div>
-    </div>
+      <div class="card-description">{{ post.data.description }}</div>
+    </section>
   </article>
-</a>
 {% endfor %}
+</div>
