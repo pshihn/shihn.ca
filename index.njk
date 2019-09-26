@@ -10,6 +10,7 @@ pagination:
 
 <head>
   <meta charset="utf-8">
+  <title>Preet's website</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/site.css">
 </head>
@@ -50,63 +51,17 @@ pagination:
       width: auto;
     }
 
-    a.navlink {
-      color: white;
-      text-decoration: none;
-      outline: none;
-      text-transform: uppercase;
-      font-size: 14px;
-      font-family: sans-serif;
-      letter-spacing: 1.25px;
-      padding: 8px 0;
-      margin: 0 8px;
-      font-weight: 400;
-      position: relative;
-      user-select: none;
-    }
-
-    a.navlink::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: white;
-      height: 8px;
-      opacity: 1;
-      transition: opacity 0.3s ease;
-    }
-
-    a.navlink.selected::before {
-      background: var(--highlight-blue);
-    }
-
     main {
       padding: 16px 8px;
       max-width: 600px;
       margin: 0 auto;
     }
 
-    @media(hover: hover) {
-      a.navlink::before {
-        opacity: 0;
-        background: var(--highlight-blue);
-      }
-
-      a.navlink:hover::before {
-        opacity: 1;
-      }
-
-      a.navlink.selected::before {
-        opacity: 1;
-      }
+    .navlink-bar {
+      margin-top: -26px;
     }
 
     @media(max-width: 600px) {
-      a.navlink::before {
-        height: 6px;
-      }
-
       h1 {
         padding: 8px 0 0 0;
       }
@@ -147,18 +102,22 @@ pagination:
   </header>
   <main>
   {% for post in posts %}
-  <article class="cardpost horizontal layout">
-    <div class="card-image"></div>
-    <div class="flex card-content">
-      <div class="card-title">
-        <a href="{{ post.url | url }}">{{ post.data.title }}</a>
+  <a class="card-link" href="{{ post.url | url }}">
+    <article class="cardpost horizontal layout" style="--card-bg:{{ post.data.themebg }}; --card-fg:{{ post.data.themefg }};">
+      <div class="card-image" style="background-image: url({{ post.data.image }});">
+        <div class="card-gradient"></div>
       </div>
-      <div class="card-description">
-        {{ post.data.description }}
+      <div class="flex card-content">
+        <div class="card-title">{{ post.data.title }}</div>
+        <div class="card-description">
+          {{ post.data.description }}
+        </div>
+        <div class="horizontal layout center card-footer">
+          <time class="flex" datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
+        </div>
       </div>
-      <time datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
-    </div>
-  </article>
+    </article>
+  </a>
   {% endfor %}
   </main>
 </body>

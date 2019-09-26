@@ -1,0 +1,43 @@
+---
+layout: base-layout.njk
+pagination:
+  data: collections.post
+  size: 500
+  reverse: true
+  alias: posts
+---
+<style>
+main {
+  padding: 16px 8px;
+  max-width: 616px;
+  margin: 0 auto;
+  background: none;
+  color: white;
+  min-height: calc(100vh - 130px);
+  box-sizing: border-box;
+  box-shadow: none;
+}
+@media(max-width: 600px) {
+  main {
+    padding: 0px 8px;
+  }
+}
+</style>
+{% for post in posts %}
+<a class="card-link" href="{{ post.url | url }}">
+  <article class="cardpost horizontal layout" style="--card-bg:{{ post.data.themebg }}; --card-fg:{{ post.data.themefg }};">
+    <div class="card-image" style="background-image: url({{ post.data.image }});">
+      <div class="card-gradient"></div>
+    </div>
+    <div class="flex card-content">
+      <div class="card-title">{{ post.data.title }}</div>
+      <div class="card-description">
+        {{ post.data.description }}
+      </div>
+      <div class="horizontal layout center card-footer">
+        <time class="flex" datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
+      </div>
+    </div>
+  </article>
+</a>
+{% endfor %}

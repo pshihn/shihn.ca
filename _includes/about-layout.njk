@@ -1,0 +1,26 @@
+---
+layout: base-layout.njk
+pagination:
+  data: collections.post
+  size: 500
+  reverse: true
+  alias: posts
+---
+<style>
+main {
+  padding: 16px 8px;
+  max-width: 616px;
+  margin: 0 auto;
+  background: none;
+  color: white;
+  min-height: calc(100vh - 130px);
+  box-sizing: border-box;
+  box-shadow: none;
+}
+@media(max-width: 600px) {
+  main {
+    padding: 0px 8px;
+  }
+}
+</style>
+{{ content | safe }}
