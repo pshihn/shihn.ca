@@ -1,7 +1,7 @@
 ---
 layout: post-layout.njk
-title: C - Filtering Data Client-Side - Comparing CSS, jQuery, and React
-description: Say you have a list of 100 names - Randy Hilpert Peggie Jacobi Ethelyn Nolan Sr. ...or file names, or phone numbers, or whatever. And you want to filter
+title: Filtering Data Client-Side - Comparing CSS, jQuery, and React
+description: Buy the latest and greatest cryptocurrency that no-one has heard of.
 image: https://css-tricks.com/wp-content/uploads/2018/08/marble-filter.png
 themebg: '#ded3ec'
 themefg: '#000000'
