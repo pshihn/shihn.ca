@@ -9,7 +9,7 @@ pagination:
 <style>
 main {
   padding: 16px 8px;
-  max-width: 690px;
+  max-width: 100%;
   margin: 0 auto;
   background: none;
   color: white;
@@ -23,19 +23,16 @@ main {
   }
 }
 </style>
-CREATIONS!
-<div>
 {% for post in creations %}
-  <article class="creation-card">
-    <section class="creation-card-image" style="background-image: url({{ post.data.image }});">
-      <svg>
-        <path class="creation-buffer-path" d="M 0,120 h 300 v -20 z"></path>
-      </svg>
-    </section>
-    <section class="creation-card-body">
-      <div class="card-title">{{ post.data.title }}</div>
-      <div class="card-description">{{ post.data.description }}</div>
-    </section>
+  <article class="horizontal layout creation-card" style="--card-bg:{{ post.data.themebg }}; --card-fg:{{ post.data.themefg }};">
+    <div class="creation-card-image-cell">
+      <div class="creation-card-image" style="background-image: url({{ post.data.image }});"></div>
+    </div>
+    <div class="creation-card-spacer"></div>
+    <div class="creation-card-text-cell">
+      <div class="creation-card-text horizontal layout center">
+        <span>{{ post.data.description }}</span>
+      </div>
+    </div>
   </article>
 {% endfor %}
-</div>
