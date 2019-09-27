@@ -126,19 +126,23 @@ pagination:
   {% endfor %}
   </main>
   <section>
-  {% for post in collections.creation | reverse %}
-    <article class="horizontal layout creation-card" style="--card-bg:{{ post.data.themebg }}; --card-fg:{{ post.data.themefg }};">
-      <div class="creation-card-image-cell">
-        <div class="creation-card-image" style="background-image: url({{ post.data.image }});"></div>
-      </div>
-      <div class="creation-card-spacer"></div>
-      <div class="creation-card-text-cell">
-        <div class="creation-card-text horizontal layout center">
-          <span>{{ post.data.description }}</span>
-        </div>
-      </div>
-    </article>
-  {% endfor %}
+    <div class="creations-panel horizontal layout center wrap">
+    {% for post in collections.creation | reverse %}
+      <article class="horizontal layout creation-card" style="--card-bg:{{ post.data.themebg }}; --card-fg:{{ post.data.themefg }};">
+        <a class="creation-card-image-cell card-link" href="{{ post.url | url }}">
+          <div class="creation-card-image horizontal layout center" style="background-image: url({{ post.data.image }});">
+            <div class="creation-card-title"><h2>{{ post.data.title }}</h2></div>
+          </div>
+        </a>
+        <div class="creation-card-spacer"></div>
+        <a class="creation-card-text-cell card-link" href="{{ post.url | url }}">
+          <div class="creation-card-text horizontal layout center">
+            <span>{{ post.data.description }}</span>
+          </div>
+        </a>
+      </article>
+    {% endfor %}
+    </div>
   </section>
 </body>
 

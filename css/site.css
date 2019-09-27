@@ -167,8 +167,8 @@ a.navlink.selected::before {
 .creation-card {
   box-sizing: border-box;
   position: relative;
-  margin: 16px 12px;
   padding: 32px;
+  margin: 16px 12px;
 }
 .creation-card.layout.horizontal {
   display: inline-flex;
@@ -182,6 +182,7 @@ a.navlink.selected::before {
   overflow: hidden;
   z-index: 1;
   transform: rotate(45deg);
+  position: relative;
 }
 
 .creation-card-image {
@@ -196,7 +197,7 @@ a.navlink.selected::before {
   transform: rotate(-45deg) scale(1.42);
 }
 
-.creation-card-text-cell {
+a.creation-card-text-cell.card-link {
   width: 150px;
   height: 150px;
   box-shadow: 0 3px 3px -2px rgba(0, 0, 0, .2), 0 3px 4px 0 rgba(0, 0, 0, .14), 0 1px 8px 0 rgba(0, 0, 0, .12);
@@ -222,6 +223,29 @@ a.navlink.selected::before {
   width: 20px;
 }
 
+.creation-card-title {
+  padding: 20px 0;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+.creation-card-title h2 {
+  font-size: 11px;
+  display: block;
+  text-transform: uppercase;
+  font-weight: 400;
+  background: var(--card-bg);
+  color: var(--card-fg);
+  padding: 0 20px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.creations-panel {
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
 @media(hover: hover) {
   a.navlink::before {
     opacity: 0;
@@ -239,6 +263,10 @@ a.navlink.selected::before {
   .cardpost:hover::before {
     opacity: 1;
   }
+  .creation-card-image-cell:hover h2 {
+    background: var(--highlight-blue);
+    color: white;
+  }
 }
 
 @media(max-width: 600px) {
@@ -252,7 +280,7 @@ a.navlink.selected::before {
     width: 110px;
     height: 110px;
   }
-  .creation-card-text-cell {
+  a.creation-card-text-cell.card-link {
     width: 110px;
     height: 110px;
   }

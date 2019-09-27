@@ -1,6 +1,6 @@
 ---
 layout: post-layout.njk
-title: How To Get Rich Quick
+title: Wired Elements
 description: Buy the latest and greatest cryptocurrency that no-one has heard of.
 image: https://css-tricks.com/wp-content/uploads/2019/02/iconsvg-xyz.png
 themebg: '#ffffff'
