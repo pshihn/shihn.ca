@@ -265,6 +265,10 @@ a.creation-card-text-cell.card-link {
 }
 
 @media(max-width: 600px) {
+  .card-title {
+    font-size: 16px;
+  }
+
   .creation-card  {
     margin: 16px 0;
   }
