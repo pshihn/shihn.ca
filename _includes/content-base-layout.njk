@@ -1,0 +1,86 @@
+---
+layout: base-layout.njk
+---
+
+<style>
+header {
+  padding: 8px 5px;
+  line-height: 1;
+}
+
+main {
+  background: white;
+  padding: 32px 10px;
+  color: #292929;
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  min-height: calc(100vh - 105px);
+  box-sizing: border-box;
+}
+header a, header a:hover, header a:visited {
+  outline: none;
+  text-decoration: none;
+  color: inherit;
+  border: none;
+}
+#siteName {
+  letter-spacing: 0.5px;
+  margin: 0 8px;
+}
+article {
+  max-width: 740px;
+  margin: 0 auto;
+}
+#articleBody {
+  max-width: 600px;
+  margin: 36px auto 0;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  letter-spacing: 0.2px;
+}
+#timePanel {
+  margin: 12px 0;
+  font-size: 13px;
+  color: #808080;
+  text-align: center;
+}
+h1, h2, h3, h4 {
+  font-family: system-ui, sans-serif;
+  font-weight: 300;
+  margin: 0;
+  color: var(--highlight-pink);
+}
+h1 {
+  text-align: center;
+  font-size: 28px;
+}
+
+@media(max-width: 600px) {
+  a.navlink {
+    padding: 8px 5px;
+    letter-spacing: 0.5px;
+  }
+  h1 {
+    font-size: 24px;
+  }
+}
+
+@media(max-width: 370px) {
+  #siteName span {
+    display: none;
+  }
+}
+</style>
+
+<header>
+  <div id="headerMain" class="horizontal layout center">
+    <a href="/" id="siteName"><span>shihn.ca</span> ⚡️</a>
+    <div class="flex"></div>
+    <div class="horizontal layout center navlink-bar">
+      <a class="navlink{% if page.url == '/posts/' %} selected{% endif %}" href="/posts">Writings</a>
+      <a class="navlink{% if page.url == '/creations/' %} selected{% endif %}" href="/creations">Creations</a>
+      <a class="navlink{% if page.url == '/about/' %} selected{% endif %}" href="/about">About</a>
+    </div>
+  </div>
+</header>
+<main>
+{{ content | safe }}
+</main>

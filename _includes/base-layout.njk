@@ -4,127 +4,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Preet's website</title>
-  <meta name="description" content="Collection of posts and projects related to technology, web development, and some other things.">
-
-  <link rel="icon" href="/stuff/fav.jpg" type="image/jpeg">
+  {% include "metadata.njk" %}
   <link rel="stylesheet" href="/css/site.css">
 </head>
 
 <body>
-  <style>
-  header {
-    padding: 8px 5px;
-    line-height: 1;
-  }
-  footer {
-    padding: 8px 5px;
-  }
-  main {
-    background: white;
-    padding: 32px 10px;
-    color: #292929;
-    box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
-    min-height: calc(100vh - 105px);
-    box-sizing: border-box;
-  }
-  footer a, footer a:hover, footer a:visited,
-  header a, header a:hover, header a:visited {
-    outline: none;
-    text-decoration: none;
-    color: inherit;
-    border: none;
-  }
-  .userImage {
-    display: block;
-    border-radius: 50%;
-    width: 42px;
-    height: 42px;
-    margin: 0 8px;
-    box-shadow: 0 3px 3px -2px rgba(0, 0, 0, .2), 0 3px 4px 0 rgba(0, 0, 0, .14), 0 1px 8px 0 rgba(0, 0, 0, .12);
-  }
-  #siteName {
-    letter-spacing: 0.5px;
-    margin: 0 8px;
-  }
-  footer .social {
-    line-height: 1;
-  }
-
-  footer .social>a {
-    padding: 2px 5px;
-  }
-
-  footer .social img {
-    display: block;
-    height: 28px;
-    width: auto;
-  }
-
-  article {
-    max-width: 740px;
-    margin: 0 auto;
-  }
-  #articleBody {
-    max-width: 600px;
-    margin: 36px auto 0;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    letter-spacing: 0.2px;
-  }
-  #timePanel {
-    margin: 12px 0;
-    font-size: 13px;
-    color: #808080;
-    text-align: center;
-  }
-  h1, h2, h3, h4 {
-    font-family: system-ui, sans-serif;
-    font-weight: 300;
-    margin: 0;
-    color: var(--highlight-pink);
-  }
-  h1 {
-    text-align: center;
-    font-size: 28px;
-  }
- 
-  @media(max-width: 600px) {
-    a.navlink {
-      padding: 8px 5px;
-      letter-spacing: 0.5px;
-    }
-    h1 {
-      font-size: 24px;
-    }
-  }
-  @media(max-width: 370px) {
-    #siteName span {
-      display: none;
-    }
-  }
-  </style>
-
-  <header>
-    <div id="headerMain" class="horizontal layout center">
-      <a href="/" id="siteName"><span>shihn.ca</span> ⚡️</a>
-      <div class="flex"></div>
-      <div class="horizontal layout center navlink-bar">
-        <a class="navlink{% if page.url == '/posts/' %} selected{% endif %}" href="/posts">Writings</a>
-        <a class="navlink{% if page.url == '/creations/' %} selected{% endif %}" href="/creations">Creations</a>
-        <a class="navlink{% if page.url == '/about/' %} selected{% endif %}" href="/about">About</a>
-      </div>
-    </div>
-  </header>
-  <main>
-  {{ content | safe }}
-  </main>
-  <footer class="horizontal layout center">
+   {{ content | safe }}
+   <footer class="horizontal layout center">
     <a href="/"><img class="userImage" alt="Preet shihn" src="/stuff/photo.jpg"></a>
     <a href="/">Preet Shihn</a>
     <div class="flex"></div>
     <div class="horizontal layout center social">
       <a href="https://twitter.com/preetster" title="Twitter"><img alt="Twitter" src="/stuff/icons/twitter.png"></a>
-      <a href="https://github.com/pshihn" title="Githun"><img alt="Github" src="/stuff/icons/github.png"></a>
+      <a href="https://github.com/pshihn" title="Github"><img alt="Github" src="/stuff/icons/github.png"></a>
       <a href="" title="RSS"><img alt="RSS" src="/stuff/icons/rss.png"></a>
     </div>
   </footer>

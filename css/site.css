@@ -246,6 +246,35 @@ a.creation-card-text-cell.card-link {
   justify-content: center;
 }
 
+footer {
+  padding: 8px 5px;
+}
+footer a, footer a:hover, footer a:visited {
+  outline: none;
+  text-decoration: none;
+  color: inherit;
+  border: none;
+}
+footer .userImage {
+  display: block;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  margin: 0 8px;
+  box-shadow: 0 3px 3px -2px rgba(0, 0, 0, .2), 0 3px 4px 0 rgba(0, 0, 0, .14), 0 1px 8px 0 rgba(0, 0, 0, .12);
+}
+footer .social {
+  line-height: 1;
+}
+footer .social>a {
+  padding: 2px 5px;
+}
+footer .social img {
+  display: block;
+  height: 28px;
+  width: auto;
+}
+
 @media(hover: hover) {
   a.navlink::before {
     opacity: 0;

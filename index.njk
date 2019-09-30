@@ -1,172 +1,176 @@
 ---
+layout: base-layout.njk
 pagination:
   data: collections.post
   size: 5
   reverse: true
   alias: posts
 ---
-<!doctype html>
-<html lang="en">
+<style>
+  h1 {
+    font-weight: 300;
+    font-size: 20px;
+    padding: 0 0 0 16px;
+    margin: 0;
+  }
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Preet's website</title>
-  <meta name="description" content="Collection of posts and projects related to technology, web development, and some other things.">
-  
-  <link rel="icon" href="/stuff/fav.jpg" type="image/jpeg">
-  <link rel="stylesheet" href="/css/site.css">
-</head>
+  header {
+    padding: 8px 5px 8px 12px;
+    line-height: 1;
+  }
 
-<body>
-  <style>
+  #userImage {
+    display: block;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    box-shadow: 0 3px 3px -2px rgba(0, 0, 0, .2), 0 3px 4px 0 rgba(0, 0, 0, .14), 0 1px 8px 0 rgba(0, 0, 0, .12);
+  }
+
+  header .social {
+    padding: 6px 0 0 11px;
+    line-height: 1;
+  }
+
+  header .social>a {
+    padding: 2px 5px;
+  }
+
+  header .social img {
+    display: block;
+    height: 28px;
+    width: auto;
+  }
+
+  #postSection {
+    padding: 16px 8px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  #creationSection {
+    padding: 8px;
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .navlink-bar {
+    margin-top: -40px;
+  }
+
+  a.inline-link, a.inline-link:hover, a.inline-link:visited {
+    color: inherit;
+    display: inline-block;
+    text-decoration: none;
+    outline: none;
+    text-transform: lowercase;
+    border: none;
+    font-size: 16px;
+    letter-spacing: 1px;
+    border-bottom: 5px solid var(--highlight-blue);
+  }
+
+  .morePanel {
+    padding: 24px 0 16px;
+    text-align: center;
+  }
+
+  .welcome-message {
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  footer.layout.horizontal {
+    display: none;
+  }
+
+  main {
+    padding: 32px 0;
+  }
+
+  @media(max-width: 600px) {
     h1 {
-      font-weight: 300;
-      font-size: 20px;
-      padding: 0 0 0 16px;
-      margin: 0;
+      padding: 8px 0 0 0;
     }
 
     header {
       padding: 8px 5px;
-      line-height: 1;
-    }
-
-    #userImage {
-      display: block;
-      border-radius: 50%;
-      width: 70px;
-      height: 70px;
-      box-shadow: 0 3px 3px -2px rgba(0, 0, 0, .2), 0 3px 4px 0 rgba(0, 0, 0, .14), 0 1px 8px 0 rgba(0, 0, 0, .12);
     }
 
     header .social {
-      padding: 6px 0 0 11px;
-      line-height: 1;
+      padding: 8px 0 0 0;
     }
 
-    header .social>a {
-      padding: 2px 5px;
-    }
-
-    header .social img {
-      display: block;
-      height: 28px;
-      width: auto;
-    }
-
-    section {
-      padding: 8px;
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    main {
-      padding: 16px 8px;
-      max-width: 600px;
-      margin: 0 auto;
+    #headerMain {
+      -ms-flex-direction: row;
+      -webkit-flex-direction: row;
+      flex-direction: column;
     }
 
     .navlink-bar {
-      margin-top: -40px;
+      margin-top: 8px;
     }
 
-    a.inline-link, a.inline-link:hover, a.inline-link:visited {
-      color: inherit;
-      display: inline-block;
-      text-decoration: none;
-      outline: none;
-      text-transform: lowercase;
-      border: none;
-      font-size: 16px;
-      letter-spacing: 1px;
-      border-bottom: 5px solid var(--highlight-blue);
+    #creationSection {
+      margin-top: 0px;
     }
 
-    .morePanel {
-      padding: 24px 0 16px;
-      text-align: center;
+    main {
+      padding: 8px 0;
     }
+  }
+</style>
 
-    .welcome-message {
-      margin-bottom: 40px;
-      text-align: center;
-      font-size: 18px;
-    }
-
-    @media(max-width: 600px) {
-      h1 {
-        padding: 8px 0 0 0;
-      }
-
-      header .social {
-        padding: 8px 0 0 0;
-      }
-
-      #headerMain {
-        -ms-flex-direction: row;
-        -webkit-flex-direction: row;
-        flex-direction: column;
-      }
-
-      .navlink-bar {
-        margin-top: 8px;
-      }
-
-      section {
-        margin-top: 0px;
-      }
-    }
-  </style>
-
-  <header>
-    <div id="headerMain" class="horizontal layout center">
-      <a href="/"><img id="userImage" alt="Preet shihn" src="/stuff/photo.jpg"></a>
-      <div class="flex">
-        <h1>Preet Shihn</h1>
-        <div class="horizontal layout center social">
-          <a href="https://twitter.com/preetster" title="Twitter"><img alt="Twitter" src="/stuff/icons/twitter.png"></a>
-          <a href="https://github.com/pshihn" title="Githun"><img alt="Github" src="/stuff/icons/github.png"></a>
-          <a href="" title="RSS"><img alt="RSS" src="/stuff/icons/rss.png"></a>
-        </div>
-      </div>
-      <div class="horizontal layout center navlink-bar">
-        <a class="navlink" href="/posts">Writings</a>
-        <a class="navlink" href="/creations">Creations</a>
-        <a class="navlink" href="/about">About</a>
+<header>
+  <div id="headerMain" class="horizontal layout center">
+    <a href="/"><img id="userImage" alt="Preet shihn" src="/stuff/photo.jpg"></a>
+    <div class="flex">
+      <h1>Preet Shihn</h1>
+      <div class="horizontal layout center social">
+        <a href="https://twitter.com/preetster" title="Twitter"><img alt="Twitter" src="/stuff/icons/twitter.png"></a>
+        <a href="https://github.com/pshihn" title="Github"><img alt="Github" src="/stuff/icons/github.png"></a>
+        <a href="" title="RSS"><img alt="RSS" src="/stuff/icons/rss.png"></a>
       </div>
     </div>
-  </header>
-  <main>
-
-  <p class="welcome-message">
-    👋🏽 Hi! Here are some of my recent blog posts and creations 
-  </p>
-
-  {% for post in posts %}
-  <a class="card-link" href="{{ post.url | url }}">
-    <article class="cardpost horizontal layout" style="--card-bg:{{ post.data.themebg }}; --card-fg:{{ post.data.themefg }};">
-      <div class="card-image" style="background-image: url({{ post.data.image }});">
-        <div class="card-gradient"></div>
-      </div>
-      <div class="flex card-content">
-        <div class="card-title">{{ post.data.title }}</div>
-        <div class="card-description">
-          {{ post.data.description }}
-        </div>
-        <div class="horizontal layout center card-footer">
-          <time class="flex" datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
-        </div>
-      </div>
-    </article>
-  </a>
-  {% endfor %}
-  <div class="morePanel">
-    <a class="inline-link" href="/posts">view all posts</a>
+    <div class="horizontal layout center navlink-bar">
+      <a class="navlink" href="/posts">Writings</a>
+      <a class="navlink" href="/creations">Creations</a>
+      <a class="navlink" href="/about">About</a>
+    </div>
   </div>
-  </main>
+</header>
 
-  <section>
+<main>
+  <section id="postSection">
+    <p class="welcome-message">
+      👋🏽 Hi! Here are some of my recent blog posts and creations 
+    </p>
+
+    {% for post in posts %}
+    <a class="card-link" href="{{ post.url | url }}">
+      <article class="cardpost horizontal layout" style="--card-bg:{{ post.data.themebg }}; --card-fg:{{ post.data.themefg }};">
+        <div class="card-image" style="background-image: url({{ post.data.image }});">
+          <div class="card-gradient"></div>
+        </div>
+        <div class="flex card-content">
+          <div class="card-title">{{ post.data.title }}</div>
+          <div class="card-description">
+            {{ post.data.description }}
+          </div>
+          <div class="horizontal layout center card-footer">
+            <time class="flex" datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
+          </div>
+        </div>
+      </article>
+    </a>
+    {% endfor %}
+    <div class="morePanel">
+      <a class="inline-link" href="/posts">view all posts</a>
+    </div>
+  </section>
+
+  <section id="creationSection">
     <div class="creations-panel horizontal layout center wrap">
     {% for post in collections.creation | reverse %}
       <article class="horizontal layout creation-card" style="--card-bg:{{ post.data.themebg }}; --card-fg:{{ post.data.themefg }};">
@@ -188,6 +192,10 @@ pagination:
       <a class="inline-link" href="/creations">more in creations</a>
     </div>
   </section>
+  
+</main>
+
+  
 </body>
 
 </html>
