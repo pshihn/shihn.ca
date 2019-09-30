@@ -53,8 +53,9 @@ pagination:
     }
 
     section {
-      padding: 16px 8px;
+      padding: 8px;
       text-align: center;
+      margin-top: 40px;
     }
 
     main {
@@ -65,6 +66,29 @@ pagination:
 
     .navlink-bar {
       margin-top: -40px;
+    }
+
+    a.inline-link, a.inline-link:hover, a.inline-link:visited {
+      color: inherit;
+      display: inline-block;
+      text-decoration: none;
+      outline: none;
+      text-transform: lowercase;
+      border: none;
+      font-size: 16px;
+      letter-spacing: 1px;
+      border-bottom: 5px solid var(--highlight-blue);
+    }
+
+    .morePanel {
+      padding: 24px 0 16px;
+      text-align: center;
+    }
+
+    .welcome-message {
+      margin-bottom: 40px;
+      text-align: center;
+      font-size: 18px;
     }
 
     @media(max-width: 600px) {
@@ -84,6 +108,10 @@ pagination:
 
       .navlink-bar {
         margin-top: 8px;
+      }
+
+      section {
+        margin-top: 0px;
       }
     }
   </style>
@@ -107,6 +135,11 @@ pagination:
     </div>
   </header>
   <main>
+
+  <p class="welcome-message">
+    👋🏽 Hi! Here are some of my recent blog posts and creations 
+  </p>
+
   {% for post in posts %}
   <a class="card-link" href="{{ post.url | url }}">
     <article class="cardpost horizontal layout" style="--card-bg:{{ post.data.themebg }}; --card-fg:{{ post.data.themefg }};">
@@ -125,7 +158,11 @@ pagination:
     </article>
   </a>
   {% endfor %}
+  <div class="morePanel">
+    <a class="inline-link" href="/posts">view all posts</a>
+  </div>
   </main>
+
   <section>
     <div class="creations-panel horizontal layout center wrap">
     {% for post in collections.creation | reverse %}
@@ -143,6 +180,9 @@ pagination:
         </a>
       </article>
     {% endfor %}
+    </div>
+    <div class="morePanel">
+      <a class="inline-link" href="/creations">more in creations</a>
     </div>
   </section>
 </body>

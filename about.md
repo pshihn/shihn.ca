@@ -2,15 +2,17 @@
 layout: about-layout.njk
 ---
 
-👋🏽 I'm Preet - A Canadian 🇨🇦 engineer, living in San Francisco with my beautiful wife Ashna.
+👋🏽 I'm Preet - A Canadian 🇨🇦 engineer, living in San Francisco with my beautiful wife.
 
 I studied Computer Engineering 💻 and Physics ⚛️ at Waterloo.
 
-I've been professionally writing code for a while now, and have worked on all sorts of tech. For the last few years though, I have been developing mostly for the web.<br/>
+I've been professionally writing code for a while - worked on UI automation engines, embedded browsers, a few other random things. 
+For the last few years though, I have been developing mostly for the web.
 
 ## Current technical interests
 🌐 The Open Web<br>
 🎇 Graphics<br>
+👀 Engaging Story Telling<br>
 🧠 Decision Engines<br>
 📰 Computational Journalism<br>
 
@@ -21,7 +23,7 @@ I've been professionally writing code for a while now, and have worked on all so
 
 ## About this site
 
-I'm not much of a writer and my goal is to improve some skills in that department. So, I thought a blog may be a way to go. 
+I'm not much of a writer, but I am hoping to get better at it. 
 
 All content on this site is licensed under<br>[Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
 
