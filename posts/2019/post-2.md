@@ -6,7 +6,7 @@ image: https://css-tricks.com/wp-content/uploads/2019/02/iconsvg-xyz.png
 themebg: '#ffffff'
 themefg: '#000000'
 date: 2019-06-01
-tags: ['post']
+tags: ['posts']
 ---
 <!-- Excerpt Start -->
 Buy the latest and greatest cryptocurrency that no-one has heard of.

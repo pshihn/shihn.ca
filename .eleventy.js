@@ -1,8 +1,18 @@
 const moment = require('moment');
+const pluginRss = require("@11ty/eleventy-plugin-rss");
+const syntaxHighlightPlugin = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 moment.locale('en');
 
 module.exports = function (eleventyConfig) {
+  // syntax highlighting plugin
+  eleventyConfig.addPlugin(syntaxHighlightPlugin, {
+    templateFormats: 'md'
+  });
+
+  // RSS plugin
+  eleventyConfig.addPlugin(pluginRss);
+
   eleventyConfig.addFilter('dateIso', date => {
     return moment(date).toISOString();
   });
@@ -11,6 +21,6 @@ module.exports = function (eleventyConfig) {
   });
 
   // Folders to copy to output folder
-  eleventyConfig.addPassthroughCopy("stuff");
-  eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy('stuff');
+  eleventyConfig.addPassthroughCopy('css');
 };

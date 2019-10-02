@@ -6,7 +6,7 @@ image: https://css-tricks.com/wp-content/uploads/2018/08/marble-filter.png
 themebg: '#ded3ec'
 themefg: '#000000'
 date: 2019-05-30
-tags: ['post']
+tags: ['posts']
 ---
 <!-- Excerpt Start -->
 This is the first post on my blog.

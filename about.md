@@ -12,9 +12,8 @@ For the last few years though, I have been developing mostly for the web.
 ## Current technical interests
 🌐 The Open Web<br>
 🎇 Graphics<br>
-👀 Engaging Story Telling<br>
 🧠 Decision Engines<br>
-📰 Computational Journalism<br>
+👀 Engaging Story Telling<br>
 
 ## Other interests
 📸 Polaroids<br>
