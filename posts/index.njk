@@ -23,7 +23,7 @@ main {
 }
 </style>
 {% for post in posts %}
-<a class="card-link" href="{{ post.url | url }}">
+<a class="card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.data.title }}">
   <article class="cardpost horizontal layout" style="--card-bg:{{ post.data.themebg }}; --card-fg:{{ post.data.themefg }};">
     <div class="card-image" style="background-image: url({{ post.data.image }});">
       <div class="card-gradient"></div>
