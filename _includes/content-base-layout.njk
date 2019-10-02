@@ -27,18 +27,19 @@ header a, header a:hover, header a:visited {
   margin: 0 8px;
 }
 article {
-  max-width: 740px;
+  max-width: 800px;
   margin: 0 auto;
+  font-size: 18px;
 }
 #articleBody {
-  max-width: 600px;
+  max-width: 640px;
   margin: 36px auto 0;
   font-family: Georgia, 'Times New Roman', Times, serif;
   letter-spacing: 0.2px;
 }
 #timePanel {
   margin: 12px 0;
-  font-size: 13px;
+  font-size: 12px;
   color: #808080;
   text-align: center;
 }
@@ -49,8 +50,25 @@ h1, h2, h3, h4 {
   color: var(--highlight-pink);
 }
 h1 {
+  letter-spacing: 0.5px;
   text-align: center;
-  font-size: 28px;
+  font-size: 2em;
+}
+#articleBody h2 {
+  font-weight: 400;
+  font-size: 1.35em;
+}
+#articleBody a, #articleBody a:hover, #articleBody a:visited {
+  text-decoration: none;
+  outline: none;
+  border: none;
+  color: #144DDB;
+}
+
+@media(hover: hover) {
+  #articleBody a:hover {
+    box-shadow: 0 2px var(--highlight-blue);
+  }
 }
 
 @media(max-width: 600px) {
