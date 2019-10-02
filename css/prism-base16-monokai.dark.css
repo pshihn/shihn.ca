@@ -18,8 +18,9 @@ code[class*="language-"], pre[class*="language-"] {
 }
 pre[class*="language-"] {
 	padding: 1em;
-	margin: .5em 0;
+	margin: 2em 0;
 	overflow: auto;
+	border-radius: 5px;
 }
 :not(pre) > code[class*="language-"] {
 	padding: .1em;

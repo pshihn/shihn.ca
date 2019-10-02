@@ -31,12 +31,6 @@ article {
   margin: 0 auto;
   font-size: 18px;
 }
-#articleBody {
-  max-width: 640px;
-  margin: 36px auto 0;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  letter-spacing: 0.2px;
-}
 #timePanel {
   margin: 12px 0;
   font-size: 12px;
@@ -45,7 +39,7 @@ article {
 }
 h1, h2, h3, h4 {
   font-family: system-ui, sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   margin: 0;
   color: var(--highlight-pink);
 }
@@ -54,8 +48,22 @@ h1 {
   text-align: center;
   font-size: 2em;
 }
+
+#articleBody {
+  margin: 36px auto 0;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  letter-spacing: 0.2px;
+}
+#articleBody h2,
+#articleBody h3,
+#articleBody p {
+  max-width: 640px;
+  margin: 1em auto;
+}
+#articleBody h3 {
+  font-size: 1.2em;
+}
 #articleBody h2 {
-  font-weight: 400;
   font-size: 1.35em;
 }
 #articleBody a, #articleBody a:hover, #articleBody a:visited {
@@ -63,6 +71,12 @@ h1 {
   outline: none;
   border: none;
   color: #144DDB;
+}
+#articleBody blockquote {
+  background: #f5f5f5;
+  padding: 1em;
+  font-style: italic;
+  border-radius: 5px;
 }
 
 @media(hover: hover) {
@@ -77,7 +91,18 @@ h1 {
     letter-spacing: 0.5px;
   }
   h1 {
-    font-size: 24px;
+    font-size: 1.75em;
+  }
+  #articleBody blockquote {
+    margin: 1em 0;
+  }
+  #articleBody pre[class*="language-"] {
+    padding: 0.5em;
+  }
+  #articleBody code[class*="language-"],
+  #articleBody pre[class*="language-"] {
+    font-size: 12px;
+    line-height: 1.5;
   }
 }
 
