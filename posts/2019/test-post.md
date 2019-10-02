@@ -142,6 +142,11 @@ The reason for this is the nature of RPC. **Every method invocation is turned in
 
 ### Problems
 
+<figure>
+  <img src="/stuff/photo2.jpg" alt="Preet shihn photoe">
+  <figcaption>Depth and breadth vary between 1 and 6. For each permutation, 1000 objects will be generated.</figcaption>
+</figure>
+
 As the interface shows, `subscribe()` expects a callback as a parameter. But functions can’t be sent via `postMessage()`, so this would throw. For this reason Comlink provides `proxy()`. Wrapping a value in **`proxy()` will cause Comlink to not send the value itself but a proxy instead**. So it’s like Comlink using itself.
 
 Another problem is that `getState()` is expected to return a value synchronously, but Comlink has made it asynchronous. To solve this we’ll have to get our hands dirty and keep a local copy of the most recent state value we have received.
