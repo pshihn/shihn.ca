@@ -117,7 +117,7 @@ pagination:
     }
 
     main {
-      padding: 8px 0;
+      padding: 8px 0 40px;
     }
   }
 </style>
@@ -172,7 +172,7 @@ pagination:
 
   <section id="creationSection">
     <div class="creations-panel horizontal layout center wrap">
-    {% for post in collections.creation | reverse %}
+    {% for post in collections.featured | reverse %}
       <article class="horizontal layout creation-card" style="--card-bg:{{ post.data.themebg }}; --card-fg:{{ post.data.themefg }};">
         <a class="creation-card-image-cell card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.data.title }}">
           <div class="creation-card-image horizontal layout center" style="background-image: url({{ post.data.image }});">
