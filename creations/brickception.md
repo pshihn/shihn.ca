@@ -1,7 +1,7 @@
 ---
 layout: creation-layout.njk
 title: Brickception
-description: Breakout game with popup windows!
+description: A nested Breakout game with popup windows!
 image: /stuff/creations/brickception/logo.jpg
 imagefull: /stuff/creations/brickception/logo.jpg
 themebg: 'rgba(6,17,40,1)'
