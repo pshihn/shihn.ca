@@ -6,7 +6,7 @@ image: /stuff/creations/wired/logo.jpg
 imagefull: /stuff/creations/wired/sample.png
 themebg: 'rgba(239,229,243,1)'
 themefg: '#000000'
-date: 2019-10-03
+date: 2019-10-02
 tags: ['creation']
 ---
 
