@@ -6,7 +6,7 @@ layout: about-layout.njk
 
 I studied Computer Engineering 💻 and Physics ⚛️ at Waterloo.
 
-I've been professionally writing code for a while - worked on UI automation engines, embedded browsers, a few other random things. 
+I've been professionally writing code for a while - worked on UI automation engines, web browsers, control systems, a few other random things. 
 For the last few years though, I have been developing mostly for the web.
 
 ## Current technical interests
