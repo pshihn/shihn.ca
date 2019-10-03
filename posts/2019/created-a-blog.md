@@ -27,7 +27,7 @@ I decided early on that the site will be divided into two main sections - the bl
 
 ## Background + Colors
 
-I was talking to someone a couple of days ago how websites rarely use textured backgrounds anymore. Right away, I decided my blog will not be flat and will have some sort of textured background. My go to place for this is usually [Subtle Patterns](https://www.toptal.com/designers/subtlepatterns/), but I remebered I had this texture (I don't recall the source) from an abandoned side project from years ago. I decided to use it to avoid spending hours trying different patterns.
+I was talking to someone a couple of days ago how websites rarely use textured backgrounds anymore. Right away, I decided my blog will not be flat and will have some sort of textured background. My go to place for this is usually [Subtle Patterns](https://www.toptal.com/designers/subtlepatterns/), but I remembered I had this texture (I don't recall the source) from an abandoned side project from years ago. I decided to use it to avoid spending hours trying different patterns.
 
 ![Gray tectured background](/stuff/wash.jpg)
 
@@ -73,7 +73,7 @@ It creates the following effect:
 
 ## Cards - Creations
 
-I wanted a different look for items representing experiemnts and side projects. With my allocated time to design this running out, I went to extreme - What doesn't look like a rectangle? **A circle!**
+I wanted a different look for items representing experiments and side projects. With my allocated time to design this running out, I went to extreme - What doesn't look like a rectangle? **A circle!**
 
 After some mucking around, I ended up with the following. It uses the same color theming described for blog-post cards, but no gradients here. It looks a bit whimsical, but I was going for that. 
 
