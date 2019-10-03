@@ -1,6 +1,6 @@
 ---
 layout: post-layout.njk
-title: You’re a Movie Star. Congrats, Here’s Your Space Movie.
+title: You’re a Movie Star. Congrats. (Dummy post)
 description: A major film career isn’t complete without one. This year it was Brad Pitt and Natalie Portman’s turns.
 image: /stuff/posts/created-a-blog/nportman.jpg
 themebg: 'rgba(80,47,28,1)'

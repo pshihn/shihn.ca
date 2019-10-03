@@ -1,10 +1,11 @@
 ---
 layout: post-layout.njk
 title: I created a blog and decided to keep it
-description: An intro to the blog, its design, and purpose.
-image: https://css-tricks.com/wp-content/uploads/2018/08/marble-filter.png
-themebg: 'rgba(222,211,236,1)'
-themefg: '#000000'
+description: An intro to the blog - Its purpose and how I designed it.
+image: /stuff/posts/created-a-blog/preet-small.jpg
+imagefull: /stuff/posts/created-a-blog/preet.jpg
+themebg: 'rgba(84,127,145,1)'
+themefg: '#ffffff'
 date: 2019-10-04
 tags: ['posts']
 ---
