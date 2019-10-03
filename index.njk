@@ -149,7 +149,7 @@ pagination:
 
     {% for post in posts %}
     <a class="card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.data.title }}">
-      <article class="cardpost horizontal layout" style="--card-bg:{{ post.data.themebg }}; --card-fg:{{ post.data.themefg }};">
+      <article class="cardpost horizontal layout" style="{{ post.data.themebg | transparentize }} --card-fg:{{ post.data.themefg }};">
         <div class="card-image" style="background-image: url({{ post.data.image }});">
           <div class="card-gradient"></div>
         </div>
@@ -173,7 +173,7 @@ pagination:
   <section id="creationSection">
     <div class="creations-panel horizontal layout center wrap">
     {% for post in collections.featured | reverse %}
-      <article class="horizontal layout creation-card" style="--card-bg:{{ post.data.themebg }}; --card-fg:{{ post.data.themefg }};">
+      <article class="horizontal layout creation-card" style="{{ post.data.themebg | transparentize }} --card-fg:{{ post.data.themefg }};">
         <a class="creation-card-image-cell card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.data.title }}">
           <div class="creation-card-image horizontal layout center" style="background-image: url({{ post.data.image }});">
             <div class="creation-card-title"><h2>{{ post.data.title }}</h2></div>

@@ -3,7 +3,7 @@ layout: post-layout.njk
 title: How To Get Rich Quick
 description: Buy the latest and greatest cryptocurrency that no-one has heard of.
 image: https://css-tricks.com/wp-content/uploads/2019/02/iconsvg-xyz.png
-themebg: '#ffffff'
+themebg: 'rgba(255,255,255,1)'
 themefg: '#000000'
 date: 2019-06-01
 tags: ['posts']

@@ -3,7 +3,7 @@ layout: post-layout.njk
 title: I created a blog and decided to keep it
 description: My goal is to bring off-main-thread architectures to main-stream web development. Are React and Redux compatible with this philosophy?
 image: https://css-tricks.com/wp-content/uploads/2018/08/marble-filter.png
-themebg: '#ded3ec'
+themebg: 'rgba(222,211,236,1)'
 themefg: '#000000'
 date: 2019-09-30
 tags: ['posts']
