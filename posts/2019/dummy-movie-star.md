@@ -10,6 +10,9 @@ tags: ['posts']
 ---
 
 <style>
+.popReactionPanel {
+   display: none;   
+}
 h1,
 #timePanel {
    display: none;
