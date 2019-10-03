@@ -1,8 +1,6 @@
-const moment = require('moment');
+const { DateTime } = require("luxon");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const syntaxHighlightPlugin = require("@11ty/eleventy-plugin-syntaxhighlight");
-
-moment.locale('en');
 
 module.exports = function (eleventyConfig) {
   // syntax highlighting plugin
@@ -15,10 +13,10 @@ module.exports = function (eleventyConfig) {
 
   // filters
   eleventyConfig.addFilter('dateIso', date => {
-    return moment(date).toISOString();
+    return DateTime.fromJSDate(date, { zone: 'utc' }).toFormat('yyyy-LL-dd');
   });
   eleventyConfig.addFilter('dateReadable', date => {
-    return moment(date).format('LL'); // E.g. May 31, 2019
+    return DateTime.fromJSDate(date, { zone: 'utc' }).toFormat("LLL d, yyyy");
   });
   eleventyConfig.addFilter('transparentize', color => {
     const tp = color.replace(',1)', ',0)');
