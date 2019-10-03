@@ -10,7 +10,9 @@ date: 2019-10-01
 tags: ['creation']
 ---
 
-![MathML example](/stuff/creations/mathml/eq.png)
+<figure>
+  <img src="/stuff/creations/mathml/eq.png" alt="MathML example">
+</figure>
 
 [math-ml](https://github.com/pshihn/math-ml) is a small-ish (compared to alternatives ~ 12kb gzipped) JavaScript implementation of [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML) using custom-elements. 
 

@@ -173,8 +173,20 @@
     border-radius: 5px;
     overflow: hidden;
     z-index: 1;
-    transform: rotate(45deg);
     position: relative;
+    border-radius: 50%;
+  }
+  .creation-card-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--card-bg, transparent);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
   .creation-card-image {
     position: relative;
@@ -185,7 +197,6 @@
     background-origin: border-box;
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    transform: rotate(-45deg) scale(1.42);
   }
   a.creation-card-text-cell.card-link {
     width: 150px;
@@ -208,23 +219,25 @@
     overflow: hidden;
   }
   .creation-card-spacer {
-    width: 20px;
+    width: 15px;
   }
   .creation-card-title {
+    position: relative;
     padding: 20px 0;
     width: 100%;
     text-align: center;
     box-sizing: border-box;
   }
   .creation-card-title h2 {
-    font-size: 14px;
+    font-size: 18px;
     display: block;
     text-transform: uppercase;
     font-weight: 400;
     background: var(--card-bg);
     color: var(--card-fg);
-    padding: 0 20px;
-    transition: background 0.15s ease, color 0.15s ease;
+    padding: 5px 10px;
+    box-shadow: 0 3px 3px -2px rgba(0, 0, 0, .2), 0 3px 4px 0 rgba(0, 0, 0, .14), 0 1px 8px 0 rgba(0, 0, 0, .12);
+    transition: box-shadow 0.15s ease;
   }
   .creations-panel {
     -ms-justify-content: center;
@@ -301,9 +314,8 @@
     .cardpost:hover::before {
       opacity: 1;
     }
-    .creation-card-image-cell:hover h2 {
-      background: var(--highlight-blue);
-      color: white;
+    .creation-card-image-cell:hover .creation-card-image::before {
+      opacity: 1;
     }
   }
 
@@ -317,6 +329,13 @@
     .creation-card-image-cell {
       width: 110px;
       height: 110px;
+    }
+    .creation-card-spacer {
+      width: 8px;
+    }
+    .creation-card-title h2 {
+      font-size: 14px;
+      padding: 2px;
     }
     a.creation-card-text-cell.card-link {
       width: 110px;
