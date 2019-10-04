@@ -21,7 +21,7 @@ I will not go into the technical details behind setting up a blog, because quite
 
 ## Designing my blog
 
-Ready to create a blog for realz, the first thought was aesthetics. I had decided that I did not want to spend days designing this thing, and yet I did not want to use a generic blog template. So, I gave myself half a day to come up with a quick design and another half to actually implement it. 
+Ready to create a blog for realz, the first thought was aesthetics. I had decided that I did not want to spend days designing this thing, and yet I did not want to use a generic blog template. I gave myself a day, and no more, to come up with a quick design and most of the implementation. 
 
 I decided early on that the site will be divided into two main sections - the blog bit, and the bit where I talk about my silly side projects. Now they are under [Writings](/posts/) and [Creations](/creations/). Rest of the design was quickly put together without actually creating a cohesive design narrative.
 
@@ -83,7 +83,7 @@ After some mucking around, I ended up with the following. It uses the same color
 
 ## Fonts
 
-Having run out of time, I went with the standard fonts. No web fonts. I remember a [NY Times experiment](https://opinionator.blogs.nytimes.com/2012/08/08/hear-all-ye-people-hearken-o-earth/) where they realized people tend to consider a serifed font more reliable (Baskerville) than sans-serifed ones. So I picked a serifed font for the blog content, and san-serif for titles, links, and image captions. 
+Having run out of time, I went with the standard fonts. No web fonts. I recall a [New York Times experiment](https://opinionator.blogs.nytimes.com/2012/08/08/hear-all-ye-people-hearken-o-earth/) where they realized people tend to consider a serifed font more reliable (Baskerville) than sans-serifed ones. So I picked a serifed font for the blog content, and sans-serif for titles, links, and image captions. 
 
 ## Hosting
 
