@@ -4,6 +4,8 @@ title: Brickception
 description: A nested Breakout game with popup windows!
 image: /stuff/creations/brickception/logo.jpg
 imagefull: /stuff/creations/brickception/logo.jpg
+imageWidth: 500
+imageHeight: 233
 themebg: 'rgba(6,17,40,1)'
 themefg: '#ffffff'
 date: 2019-10-03

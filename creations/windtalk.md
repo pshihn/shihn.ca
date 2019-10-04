@@ -4,6 +4,8 @@ title: Windtalk
 description: The easiest way to work with iframes and multiple windows.
 image: /stuff/creations/windtalk/small.jpg
 imagefull: /stuff/creations/windtalk/full.png
+imageWidth: 494
+imageHeight: 256
 themebg: 'rgba(255,255,255,1)'
 themefg: '#000000'
 date: 2019-09-01

@@ -4,6 +4,8 @@ title: Wired Elements
 description: A set of common UI elements with a hand-drawn, sketchy look.
 image: /stuff/creations/wired/logo.jpg
 imagefull: /stuff/creations/wired/sample.png
+imageWidth: 600
+imageHeight: 272
 themebg: 'rgba(239,229,243,1)'
 themefg: '#000000'
 date: 2019-10-02
