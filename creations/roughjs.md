@@ -4,6 +4,8 @@ title: RoughJS
 description: Create graphics with a hand-drawn, sketchy, appearance.
 image: /stuff/creations/roughjs/rough.jpg
 imagefull: /stuff/creations/roughjs/rough-full.png
+imageWidth: 735
+imageHeight: 465
 themebg: 'rgba(203,212,228,1)'
 themefg: '#000000'
 date: 2019-10-02

@@ -4,6 +4,8 @@ title: I created a blog and decided to keep it
 description: An intro to the blog - Its purpose and how I designed it.
 image: /stuff/posts/created-a-blog/preet-small.jpg
 imagefull: /stuff/posts/created-a-blog/preet.jpg
+imageWidth: 640
+imageHeight: 640
 themebg: 'rgba(84,127,145,1)'
 themefg: '#ffffff'
 date: 2019-10-04

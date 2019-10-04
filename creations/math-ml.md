@@ -4,6 +4,8 @@ title: Math-ML
 description: A MathML implementation using custom elements
 image: /stuff/creations/mathml/emc2.jpg
 imagefull: /stuff/creations/mathml/emc2-full.jpg
+imageWidth: 647
+imageHeight: 404
 themebg: 'rgba(0,0,0,1)'
 themefg: '#FFFFFF'
 date: 2019-10-01
