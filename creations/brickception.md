@@ -9,7 +9,7 @@ imageHeight: 233
 themebg: 'rgba(6,17,40,1)'
 themefg: '#ffffff'
 date: 2019-10-03
-tags: ['creation']
+tags: ['creation', 'featured']
 ---
 
 <style>
