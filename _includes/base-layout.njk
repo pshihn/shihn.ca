@@ -304,6 +304,10 @@
     margin: .5em 0;
     background-color: #f6f6f6;
   }
+  #siteName {
+    letter-spacing: 0.5px;
+    margin: 0 8px;
+  }
 
   @media(hover: hover) {
     a.navlink::before {
@@ -350,6 +354,12 @@
     .creation-card-text {
       padding: 14px;
       font-size: 11px;
+    }
+  }
+
+  @media(max-width: 370px) {
+    #siteName span {
+      display: none;
     }
   }
   </style>
