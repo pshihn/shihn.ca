@@ -1,5 +1,5 @@
 ---
-layout: base-layout.njk
+layout: content-base-layout.njk
 pagination:
   data: collections.posts
   size: 5
@@ -7,41 +7,12 @@ pagination:
   alias: posts
 ---
 <style>
-  h1 {
-    font-weight: 300;
-    font-size: 20px;
-    padding: 0 0 0 16px;
-    margin: 0;
+  main {
+    background: none;
+    color: white;
+    box-shadow: none;
   }
-
-  header {
-    padding: 8px 5px 8px 12px;
-    line-height: 1;
-  }
-
-  #userImage {
-    display: block;
-    border-radius: 50%;
-    width: 70px;
-    height: 70px;
-    box-shadow: 0 3px 3px -2px rgba(0, 0, 0, .2), 0 3px 4px 0 rgba(0, 0, 0, .14), 0 1px 8px 0 rgba(0, 0, 0, .12);
-  }
-
-  header .social {
-    padding: 6px 0 0 11px;
-    line-height: 1;
-  }
-
-  header .social>a {
-    padding: 2px 5px;
-  }
-
-  header .social img {
-    display: block;
-    height: 28px;
-    width: auto;
-  }
-
+  
   #postSection {
     padding: 16px 8px;
     max-width: 600px;
@@ -52,10 +23,6 @@ pagination:
     padding: 8px;
     text-align: center;
     margin-top: 40px;
-  }
-
-  .navlink-bar {
-    margin-top: -40px;
   }
 
   a.inline-link, a.inline-link:hover, a.inline-link:visited {
@@ -81,117 +48,60 @@ pagination:
     font-size: 18px;
   }
 
-  main {
-    padding: 32px 0;
-  }
-
   @media(max-width: 600px) {
-    h1 {
-      padding: 8px 0 0 0;
-    }
-
-    header {
-      padding: 8px 5px;
-    }
-
-    header .social {
-      padding: 8px 0 0 0;
-    }
-
-    #headerMain {
-      -ms-flex-direction: row;
-      -webkit-flex-direction: row;
-      flex-direction: column;
-    }
-
-    .navlink-bar {
-      margin-top: 8px;
-    }
-
     #creationSection {
       margin-top: 0px;
-    }
-
-    main {
-      padding: 8px 0 40px;
     }
   }
 </style>
 
-<header>
-  <div id="headerMain" class="horizontal layout center">
-    <a href="/"><img id="userImage" alt="Preet shihn" src="/stuff/photo.jpg"></a>
-    <div class="flex">
-      <h1>Preet Shihn</h1>
-      <div class="horizontal layout center social">
-        <a href="https://twitter.com/preetster" title="Twitter"><img alt="Twitter" src="/stuff/icons/twitter.png"></a>
-        <a href="https://github.com/pshihn" title="Github"><img alt="Github" src="/stuff/icons/github.png"></a>
-        <a href="" title="RSS"><img alt="RSS" src="/stuff/icons/rss.png"></a>
+<section id="postSection">
+  <p class="welcome-message">
+    👋🏽 Hi! Here are some of my recent blog posts and creations 
+  </p>
+
+  {% for post in posts %}
+  <a class="card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.data.title }}">
+    <article class="cardpost horizontal layout" style="{{ post.data.themebg | transparentize }} --card-fg:{{ post.data.themefg }};">
+      <div class="card-image" style="background-image: url({{ post.data.image }});">
+        <div class="card-gradient"></div>
       </div>
-    </div>
-    <div class="horizontal layout center navlink-bar">
-      <a class="navlink" href="/posts/">Writings</a>
-      <a class="navlink" href="/creations/">Creations</a>
-      <a class="navlink" href="/about/">About</a>
-    </div>
+      <div class="flex card-content">
+        <div class="card-title">{{ post.data.title }}</div>
+        <div class="card-description">
+          {{ post.data.description }}
+        </div>
+        <div class="horizontal layout center card-footer">
+          <time class="flex" datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
+        </div>
+      </div>
+    </article>
+  </a>
+  {% endfor %}
+  <div class="morePanel">
+    <a class="inline-link" href="/posts/">view all posts</a>
   </div>
-</header>
+</section>
 
-<main>
-  <section id="postSection">
-    <p class="welcome-message">
-      👋🏽 Hi! Here are some of my recent blog posts and creations 
-    </p>
-
-    {% for post in posts %}
-    <a class="card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.data.title }}">
-      <article class="cardpost horizontal layout" style="{{ post.data.themebg | transparentize }} --card-fg:{{ post.data.themefg }};">
-        <div class="card-image" style="background-image: url({{ post.data.image }});">
-          <div class="card-gradient"></div>
+<section id="creationSection">
+  <div class="creations-panel horizontal layout center wrap">
+  {% for post in collections.featured | reverse %}
+    <article class="horizontal layout creation-card" style="{{ post.data.themebg | transparentize }} --card-fg:{{ post.data.themefg }};">
+      <a class="creation-card-image-cell card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.data.title }}">
+        <div class="creation-card-image horizontal layout center" style="background-image: url({{ post.data.image }});">
+          <div class="creation-card-title"><h2>{{ post.data.title }}</h2></div>
         </div>
-        <div class="flex card-content">
-          <div class="card-title">{{ post.data.title }}</div>
-          <div class="card-description">
-            {{ post.data.description }}
-          </div>
-          <div class="horizontal layout center card-footer">
-            <time class="flex" datetime="{{ post.date | dateIso }}">{{ post.date | dateReadable }}</time>
-          </div>
+      </a>
+      <div class="creation-card-spacer"></div>
+      <a class="creation-card-text-cell card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.data.title }}">
+        <div class="creation-card-text horizontal layout center">
+          <span>{{ post.data.description }}</span>
         </div>
-      </article>
-    </a>
-    {% endfor %}
-    <div class="morePanel">
-      <a class="inline-link" href="/posts/">view all posts</a>
-    </div>
-  </section>
-
-  <section id="creationSection">
-    <div class="creations-panel horizontal layout center wrap">
-    {% for post in collections.featured | reverse %}
-      <article class="horizontal layout creation-card" style="{{ post.data.themebg | transparentize }} --card-fg:{{ post.data.themefg }};">
-        <a class="creation-card-image-cell card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.data.title }}">
-          <div class="creation-card-image horizontal layout center" style="background-image: url({{ post.data.image }});">
-            <div class="creation-card-title"><h2>{{ post.data.title }}</h2></div>
-          </div>
-        </a>
-        <div class="creation-card-spacer"></div>
-        <a class="creation-card-text-cell card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.data.title }}">
-          <div class="creation-card-text horizontal layout center">
-            <span>{{ post.data.description }}</span>
-          </div>
-        </a>
-      </article>
-    {% endfor %}
-    </div>
-    <div class="morePanel">
-      <a class="inline-link" href="/creations">view all creations</a>
-    </div>
-  </section>
-  
-</main>
-
-  
-</body>
-
-</html>
+      </a>
+    </article>
+  {% endfor %}
+  </div>
+  <div class="morePanel">
+    <a class="inline-link" href="/creations">view all creations</a>
+  </div>
+</section>
