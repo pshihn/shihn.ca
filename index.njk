@@ -48,6 +48,18 @@ pagination:
     font-size: 18px;
   }
 
+  .creation-card {
+    padding: 48px 32px;
+    border-radius: 40px 0px;
+  }
+  .creation-card-glass {
+    top: 48px;
+    bottom: 48px;
+  }
+  .creation-card::before {
+    border-radius: 40px 0px;
+  }
+
   @media(max-width: 600px) {
     #creationSection {
       margin-top: 0px;
@@ -86,17 +98,11 @@ pagination:
 <section id="creationSection">
   <div class="creations-panel horizontal layout center wrap">
   {% for post in collections.featured | reverse %}
-    <article class="horizontal layout creation-card" style="{{ post.data.themebg | transparentize }} --card-fg:{{ post.data.themefg }};">
-      <a class="creation-card-image-cell card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.data.title }}">
-        <div class="creation-card-image horizontal layout center" style="background-image: url({{ post.data.image }});">
-          <div class="creation-card-title"><h2>{{ post.data.title }}</h2></div>
-        </div>
-      </a>
-      <div class="creation-card-spacer"></div>
-      <a class="creation-card-text-cell card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.data.title }}">
-        <div class="creation-card-text horizontal layout center">
-          <span>{{ post.data.description }}</span>
-        </div>
+    <article class="creation-card" style="{{ post.data.themebg | transparentize }} --card-fg:{{ post.data.themefg }}; background-image: url({{ post.data.image }});">
+      <div class="creation-card-glass"></div>
+      <a class="card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.data.title }}">
+        <div class="card-title">{{ post.data.title }}</div>
+        <div class="card-description">{{ post.data.description }}</div>
       </a>
     </article>
   {% endfor %}

@@ -9,7 +9,7 @@ imageHeight: 259
 themebg: 'rgba(206,90,87,1)'
 themefg: '#FFFFFF'
 date: 2019-10-03
-tags: ['creation']
+tags: ['creation', 'featured']
 ---
 <style>
 h1 {
