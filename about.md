@@ -2,7 +2,7 @@
 layout: about-layout.njk
 ---
 
-👋🏽 I'm Preet - A Canadian 🇨🇦 engineer, living in San Francisco with my beautiful wife.
+👋🏽 I'm Preet - A Canadian 🇨🇦 engineer, living in San Francisco.
 
 I studied Computer Engineering 💻 and Physics ⚛️ at Waterloo.
 
