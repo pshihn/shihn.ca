@@ -16,6 +16,25 @@ tags: ['posts']
 main {
   background: white;
 }
+collapsible-panel {
+  max-width: 680px;
+  margin: 0 auto;
+  font-family: monospace;
+  font-size: 14px;
+  display: none;
+}
+collapsible-panel > * {
+  padding: 0 12px;
+}
+#articleBody collapsible-panel p {
+  margin: 0px auto 14px;
+}
+collapsible-panel pre {
+  margin-top: -14px;
+  background: rgba(255,255,255,0.85);
+  padding: 16px 8px;
+  box-sizing: border-box;
+}
 </style>
 <script async src="/stuff/posts/rasterization/rasterization.js"></script>
 
@@ -42,10 +61,14 @@ I will discuss methods used in [LegraJS](https://legrajs.com/) to draw basic vec
 Let's first define an abstract function to draw a pixel at `(x, y)`, i.e. draw an emoji at the loaction. This function is refrred in the code that follows. Here we round the values of `x, y` to the nearest integer
 
 ```javascript
+// EMOJI_SIZE is the size of emoji in the font being used
 function drawEmoji(x, y) {
-  const actualX = Math.round(x);
-  const actualY = Math.round(Y);
+  const actualX = Math.round(x) * EMOJI_SIZE;
+  const actualY = Math.round(Y) * EMOJI_SIZE;
   // Draw emoji at actualX, actualX on your preferred medium
+  // e.g. on canvas:
+  var ctx = document.getElementById('canvas').getContext('2d');
+  ctx.fillText('😀', actualX, actualY);
 }
 ```
 
@@ -111,10 +134,185 @@ The scanlines go from top of the polygon to the bottom. For each scanline, we de
   <img loading="lazy" width="445" height="255" src="/stuff/posts/rasterization/scanline.png" alt="Polygon scanline">
 </figure>
 
-As we go from one point to another, we switch from *filling* mode to *non-filling* mode; and toggle between the states as we encounter each intersection point on the scan line.
+As we go from one point to another, we switch from *filling* mode to *non-filling* mode; and toggle between the states as we encounter each intersection point on the scan line. There is a bit more to consider here, specifically edge cases and optimization; more on this can found here: [Rasterizing polygons](http://www.cs.mun.ca/av/old/teaching/cg/notes/raster_poly.pdf), or expand the following section for pseudocode.
+
+<collapsible-panel label="Scanline Algorithm Details">
+<p>
+We define two data structures (tables) to hold data about the polygon edges.
+</p>
+<p>
+👉🏼 First, a global Edge Table (ET) of all the edges sorted by the <code>Y<sub>min</sub></code> value. If the edges have the same <code>Y<sub>min</sub></code> values, then they are sorted by their <code>X<sub>min</sub></code> coordinate value. 
+</p>
+<p>
+👉🏼 Second, an Active Edge Table (AET) where we keep only the edges that intersect with the current scanline.
+</p>
+
+Following describes the data structure in each row of the tables:
+
+<pre>interface EdgeTableEntry {
+  ymin: number;
+  ymax: number;
+  x: number; <span class="token comment">// Initialized to Xmin</span>
+  iSlope: number; <span class="token comment">// Inverse of the slope of yje line: 1/m</span>
+}
+
+interface ActiveEdgeTableEntry {
+  scanlineY: number; <span class="token comment">// The y value of the scanline</span>
+  edge: EdgeTableEntry;
+}
+</pre>
+
+<p>After initializing the Edge Table, we perform the following:</p>
+
+<p>
+<strong>1.</strong> Set <em>y</em> to the smallest <em>y</em> in the ET. This represents the current scanline.
+</p>
+<p>
+<strong>2.</strong> Initialize the AET to be an empty table.
+</p>
+<p>
+<strong>3.</strong> Repeat the following until both AET and ET are empty:
+</p>
+<p style="padding-left: 32px;">
+<strong>(a)</strong> Move from ET bucket <em>y</em> to the AET edges whose <em>y<sub>min</sub> ≤ y</em>.
+</p>
+<p style="padding-left: 32px;">
+<strong>(b)</strong> Remove from AET entries where <em>y = y<sub>max</sub></em>, then sort the AET on <em>x</em>.
+</p>
+<p style="padding-left: 32px;">
+<strong>(c)</strong> Fill in desired pixel values (draw an emoji) on scanline <em>y</em> by using pairs
+of <em>x</em> coordinates from the AET.
+</p>
+<p style="padding-left: 32px;">
+<strong>(d)</strong> Increement <em>y</em> by 1, i.e. the next scanline.
+</p>
+<p style="padding-left: 32px;">
+<strong>(e)</strong> For each non-vertical edge remaining in the AET, update <em>x</em> for the new <em>y</em> <br>(<code>edge.x = edge.x + edge.iSlope</code>)
+</p>
+</collapsible-panel>
 
 <draw-polygon-canvas fill></draw-polygon-canvas>
 
-More on this can found here: [Rasterizing polygons](http://www.cs.mun.ca/av/old/teaching/cg/notes/raster_poly.pdf)
 
 ## Ellipses (and Circles)
+
+Let's first define a couple of key properties of al ellipse: 
+
+<figure>
+  <img loading="lazy" width="353" height="173" src="/stuff/posts/rasterization/ellipse.png" alt="Polygon scanline">
+</figure>
+
+* **semi-major axis** `a` is half of the length of the major axis that runs through the center of the ellipse, it's focus point, and ends at the perimeter of the ellipse.
+* **semi-minor axis** `b` is the line orthogonal to the semi-major axis, with one end at the center and the other end at the perimeter.
+
+When `a = b`, the ellipse is a circle. 
+
+The most common algorithm to rasterize a circle is the [Midpoint circle algorithm](https://en.wikipedia.org/wiki/Midpoint_circle_algorithm). This was adapted by [Bresenham](http://members.chello.at/~easyfilter/bresenham.html) and generalized for ellipses. I have been using [McIlroy's algorithm](https://www.cs.dartmouth.edu/~doug/155.pdf), which build's on Bresenham's work.
+
+<draw-ellipse-canvas></draw-ellipse-canvas>
+
+The links to the algorithms describe them in more detail. Fllowing is the quick javascript implemenetation:
+
+```javascript
+// xc, xy is the center of the ellipse
+// a, b are the lengths of the semi-major and semi-minor axes
+function drawEllipse(xc, yc, a, b) {
+  let x = 0;
+  let y = b;
+  const a2 = a * a;
+  const b2 = b * b;
+  const crit1 = -(a2 / 4 + a % 2 + b2);
+  const crit2 = -(b2 / 4 + b % 2 + a2);
+  const crit3 = -(b2 / 4 + b % 2);
+  let t = -a2 * y;
+  let dxt = 2 * b2 * x;
+  let dyt = -2 * a2 * y;
+  const d2xt = 2 * b2;
+  const d2yt = 2 * a2;
+
+  const incx = () => {
+    x++;
+    dxt += d2xt;
+    t += dxt;
+  };
+
+  const incy = () => {
+    y--;
+    dyt += d2yt;
+    t += dyt;
+  };
+
+  while (y >= 0 && x <= a) {
+    drawEmoji(xc + x, yc + y);
+    if (x !== 0 || y !== 0) {
+      drawEmoji(xc - x, yc - y);
+    }
+    if (x !== 0 && y !== 0) {
+      drawEmoji(xc + x, yc - y);
+      drawEmoji(xc - x, yc + y);
+    }
+    if ((t + b2 * x <= crit1) || (t + a2 * y <= crit3)) {
+      incx();
+    } else if (t - a2 * y > crit2) {
+      incy();
+    } else {
+      incx();
+      incy();
+    }
+  }
+}
+```
+
+## Filling an Ellipse
+
+The scanline algorithm used for filling polygons can be adopted to work with Bresenham's Ellipse algorithm described above.
+Unlike a polygon, an ellipse is symmetrical, so what happens in onw quadrant of the ellipse could be reflected to the other three quadrants. 
+I have adopted the implementation described here: [Drawing Ellipses Using Filled Rectangles](http://enchantia.com/graphapp/doc/tech/ellipses.html)
+
+<draw-ellipse-canvas fill></draw-ellipse-canvas>
+
+## Bézier curve
+
+Bézier curves are used to model smooth curves in vector graphics. Often complex paths cane be constructed using a series of bézier curves. (*Aside:* These curves are also used in defining easing functions in UI animations, or in easing robotic movements)
+
+A bézier curve is defined using four parameterized points. Two end points of the curve, and two control points. Try moving these points to see what pixels get rendered:
+
+<draw-bezier-canvas></draw-bezier-canvas>
+
+For bézier curves, I often end up using [bezier.js](https://pomax.github.io/bezierjs/) which is really amazing. The two main methods I use for rasterization is `length()` which computes the length of the curve; and `getLUT(n)` which extrapolates `n` points on the curve. When using the length of the curve as `n`, one can estimate enough points on the curve to rasterize them. To get higher resolution for sharper curves, the value of `n` can be doubled. 
+
+```javascript
+// Bexier curve from point a to b, with p1 and p2 as the control points
+function bezierCurve(a, p1, p2, b) {
+  const bezier = new Bezier(a, p1, p2, b);
+  const luts = bezier.getLUT(bezier.length() * 2);
+  luts.push(b);
+  this.drawEmojis(luts); // luts is an array of x,y coordinates
+}
+```
+
+## Quadratic curve
+
+A quadratic curve is essentially a bézier curve with only one control point (or you could imagine a bézier curve where both the control points are the same). 
+
+<draw-quad-canvas></draw-quad-canvas>
+
+Fortunately, `bezier.js` supports this as well
+
+```javascript
+// Quadratic curve from point a to b, with p1 as the control points
+function bezierCurve(a, p1, b) {
+  const bezier = new Bezier(a, p1, b);
+  const luts = bezier.getLUT(bezier.length() * 2);
+  luts.push(b);
+  this.drawEmojis(luts); // luts is an array of x,y coordinates
+}
+```
+
+## Epilogue
+
+This post is, essentially, me aggregating some notes and thoughts I compiled when writing [Legra](https://legrajs.com/). Note that I did not actually compile together a final library that does draw everything using emojis, though all the interactive demos in this post do have a **emoji mode** switch on top. I'm hoping there are enough tools in this post to let one create such a library. 
+
+The interactive demos here are inspired from Amit Patel's [Red Blob Games](https://www.redblobgames.com/) blog. 
+
+Ciao!
