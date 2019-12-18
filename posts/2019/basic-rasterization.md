@@ -25,13 +25,13 @@ Rasterization is the task of turning an image, described in vector graphics, int
   <img loading="lazy" width="159" height="204" src="/stuff/posts/rasterization/triangle.png" alt="Triangle rasterized">
 </figure>
 
-Consider a line, which can be described by the equation `y = ax + b`. For all values of `x`, there is a corresponding `y`. This is a continuous function, but when drawing on a screen, you have to work with a discrete two-dimensional array of pixels. Rasterization would involve taking the continuious line, and figuring out which specific pixels to use to draw the line.
+Algebra and Geometry gives us equations to describe shapes and lines, but when these shapes are projected on an array of pixels, they are continuous functions living in a digitized space. Consider a line, which can be described by the equation `y = ax + b`. For all values of `x`, there is a corresponding `y`. This is a continuous function, but when drawing on a screen, you have to work with a discrete two-dimensional array of pixels. Rasterization would involve taking the continuious line, and figuring out which specific pixels to use to draw the line.
 
 ## What does it have to do with drawing with Emojis?
 
 Imagine if each pixel was represented using an emoji. The pixel is **on** - the emoji is showing, the pixel is **off** - the emoji is not showing. Abstracting that, one could render any vector shape using emojis. 
 
-This is another abstraction of a fun JavaScript library I wrote - [LegraJS](https://legrajs.com/) which lets you draw using Lego like bricks. The bricks could be replacd with emojis :)
+This abstraction provided the idea of a fun JavaScript library I wrote - [LegraJS](https://legrajs.com/) which lets you draw using Lego like bricks. The bricks could be replacd with emojis :)
 
 ## Crude and Quick
 
@@ -39,7 +39,7 @@ Rasterization can get really complicated in the real world, where one has to thi
 
 I will discuss methods used in [LegraJS](https://legrajs.com/) to draw basic vector primitives - lines, polygons, ellipses, Bézier curves, etc.
 
-Let's define a function to draw a pixel at `(x, y)`. This function is refrred in the code that follows. Here we round the values of `x, y` to the nearest integer
+Let's first define an abstract function to draw a pixel at `(x, y)`, i.e. draw an emoji at the loaction. This function is refrred in the code that follows. Here we round the values of `x, y` to the nearest integer
 
 ```javascript
 function drawEmoji(x, y) {
@@ -57,7 +57,7 @@ In the demos below, a grid cell represents a pixel. Try moving the end points to
 
 In algebra, a line could be represented by the equation `y = ax + b`, here `a` represents the *slope* of the line and `b` represents the value where the line meets through the *y-axis*. 
 
-In graphics and animation, a common function, _**lerp**_ (Linear Interpolation) is used to return a number between two other numbers. _**lerp**_ is based on this simple equation that repesents a line. 
+In graphics and animation, a common function, _**lerp**_ (Linear Interpolation) is used to return a number between two other numbers. _**lerp**_ is based on the above equation that repesents a line. 
 
 ```javascript
 // Here t is between 0.0 and 1.0
@@ -66,7 +66,9 @@ function lerp(start, end, t) {
 }
 ```
 
-This function can be extended to 2-dimensions to represent points `(x,y)` for different values of `t`. But, what values of `t` should we use? If we divide the line into `N` sections, we use `t = 1/N`. Now what is the correct value of N?
+This function can be extended to 2-dimensions to represent points `(x,y)` for different values of `t`. But, what values of `t` should we use? If we divide the line into `N` sections, we use `t = 1/N`. 
+
+Now, what is the appropriate value of N?
 
 We know the two endpoints of the line, we can tell if the change in `y` is more than change in `x` or vice-versa. The number `N` is the larger of the two changes. `N = Max(|y2 - y1|, |x2 - x1|)` or in javascript `const N = Math.max(Math.abs(y2,y1), Math.abs(x2, x1))`.
 
@@ -96,19 +98,20 @@ function drawLine(x1, y1, x2, y2) {
 
 ## Polygons
 
-Now that we have tackled lines, drawing polygons is easy. A polygon is essentially connecting each vertex with a line
+Now that we have tackled lines, drawing polygons is easy. A polygon is essentially connecting adjoining vertices with a line.
 
 <draw-polygon-canvas></draw-polygon-canvas>
 
 ## Filling a Polygon
 
-One of the simplest ways to fill a polygon is by using a *Scan-Line Filling Algorithm*. The idea is to scan the shape using horizontal lines (scanlines). For each scanline, we determine at what points does the scanline intersect with the polygon. We arrange these intersecting points from left to right.
+One of the simplest ways to fill a polygon is by using the *Scan-Line Filling Algorithm*. The idea is to scan the shape using horizontal lines (scanlines).
+The scanlines go from top of the polygon to the bottom. For each scanline, we determine at what points does the scanline intersect with the polygon. We arrange these intersecting points from left to right.
 
 <figure>
   <img loading="lazy" width="445" height="255" src="/stuff/posts/rasterization/scanline.png" alt="Polygon scanline">
 </figure>
 
-As we go from one point to another, we switch from *filling* mode to *not-filling* mode. And toggle between the states as we encounter each intersection point on the scan line.
+As we go from one point to another, we switch from *filling* mode to *non-filling* mode; and toggle between the states as we encounter each intersection point on the scan line.
 
 <draw-polygon-canvas fill></draw-polygon-canvas>
 
