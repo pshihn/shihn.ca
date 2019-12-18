@@ -44,7 +44,7 @@ Rasterization is the task of turning an image, described in vector graphics, int
   <img loading="lazy" width="159" height="204" src="/stuff/posts/rasterization/triangle.png" alt="Triangle rasterized">
 </figure>
 
-Algebra and Geometry gives us equations to describe shapes and lines, but when these shapes are projected on an array of pixels, they are continuous functions living in a digitized space. Consider a line, which can be described by the equation `y = ax + b`. For all values of `x`, there is a corresponding `y`. This is a continuous function, but when drawing on a screen, you have to work with a discrete two-dimensional array of pixels. Rasterization would involve taking the continuious line, and figuring out which specific pixels to use to draw the line.
+Algebra and Geometry give us equations to describe shapes and lines, but when these shapes are projected on an array of pixels, they are continuous functions living in a digitized space. Consider a line, which can be described by the equation <code style="white-space: nowrap;">y = ax + b</code>. For all values of `x`, there is a corresponding `y`. This is a continuous function, but when drawing on a screen, you have to work with a discrete two-dimensional array of pixels. Rasterization would involve taking the continuous line, and figuring out which specific pixels to use to draw the line.
 
 ## What does it have to do with drawing with Emojis?
 
@@ -56,9 +56,9 @@ This abstraction provided the idea of a fun JavaScript library I wrote - [LegraJ
 
 Rasterization can get really complicated in the real world, where one has to think about speed, memory, visual perception, anti-aliasing, etc. But in this blog post, I only talk about the simplest and the easiest methods.
 
-I will discuss methods used in [LegraJS](https://legrajs.com/) to draw basic vector primitives - lines, polygons, ellipses, Bézier curves, etc.
+I will discuss methods used in [LegraJS](https://legrajs.com/) to draw basic vector primitives - lines, polygons, ellipses, bézier curves, etc.
 
-Let's first define an abstract function to draw a pixel at `(x, y)`, i.e. draw an emoji at the loaction. This function is refrred in the code that follows. Here we round the values of `x, y` to the nearest integer
+Let's first define an abstract function to draw a pixel at `(x, y)`, i.e. draw an emoji at the loaction. This function is referred in the code that follows. 
 
 ```javascript
 // EMOJI_SIZE is the size of emoji in the font being used
@@ -74,11 +74,11 @@ function drawEmoji(x, y) {
 
 ## Lines
 
-In the demos below, a grid cell represents a pixel. Try moving the end points to change the line, and see which pixels are used to render the line. 
+In the interactive demos I have created for this post, a grid cell represents a pixel. Try moving the end points to change the line, and see which pixels are used to render the line. Turn on the the *emoji switch* to see those pixels rendered as emojis.
 
 <draw-line-canvas></draw-line-canvas>
 
-In algebra, a line could be represented by the equation `y = ax + b`, here `a` represents the *slope* of the line and `b` represents the value where the line meets through the *y-axis*. 
+In algebra, a line could be represented by the equation `y = mx + c`, here `m` represents the *slope* of the line and `c` represents the value where the line meets through the *y-axis*. 
 
 In graphics and animation, a common function, _**lerp**_ (Linear Interpolation) is used to return a number between two other numbers. _**lerp**_ is based on the above equation that repesents a line. 
 
@@ -196,7 +196,7 @@ of <em>x</em> coordinates from the AET.
 
 ## Ellipses (and Circles)
 
-Let's first define a couple of key properties of al ellipse: 
+Let's first define a couple of key properties of an ellipse: 
 
 <figure>
   <img loading="lazy" width="353" height="173" src="/stuff/posts/rasterization/ellipse.png" alt="Polygon scanline">
@@ -311,7 +311,7 @@ function bezierCurve(a, p1, b) {
 
 ## Epilogue
 
-This post is, essentially, me aggregating some notes and thoughts I compiled when writing [Legra](https://legrajs.com/). Note that I did not actually compile together a final library that does draw everything using emojis, though all the interactive demos in this post do have a **emoji mode** switch on top. I'm hoping there are enough tools in this post to let one create such a library. 
+This post is, essentially, me aggregating some notes and thoughts I compiled when writing [Legra](https://legrajs.com/). Note that I did not actually compile together a final library that does draw everything using emojis, though all the interactive demos in this post do have an **emoji mode** switch on top. I'm hoping there are enough tools in this post to let one create such a library. 
 
 The interactive demos here are inspired from Amit Patel's [Red Blob Games](https://www.redblobgames.com/) blog. 
 
