@@ -1,14 +1,14 @@
 ---
 layout: post-layout.njk
 title: Basic rasterization / Draw with emojis
-description: What's new in 2.0 release of wired-elements - Common UI Elements with a sketchy hand-drawn look.
-image: /stuff/posts/wire-elements-2/welogo.jpg
-imagefull: /stuff/posts/wire-elements-2/welogo.png
-imageWidth: 400
-imageHeight: 400
-themebg: 'rgba(243,229,245,1)'
+description: Discovering basic algorithms to render linesm shapes, curves and filling them.
+image: /stuff/posts/rasterization/cover.png
+imagefull: /stuff/posts/rasterization/cover.png
+imageWidth: 675
+imageHeight: 387
+themebg: 'rgba(231,231,231,1)'
 themefg: '#000000'
-date: 2019-12-04
+date: 2019-12-19
 tags: ['posts']
 ---
 
