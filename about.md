@@ -4,7 +4,7 @@ layout: about-layout.njk
 
 👋🏽 I'm Preet - A Canadian 🇨🇦 engineer, living in San Francisco.
 
-I studied Computer Engineering 💻 and Physics ⚛️ at Waterloo.
+I studied Computer Engineering 💻 and Physics ⚛️ at University of Waterloo in Ontario, Canada.
 
 I've been professionally writing code for a while - worked on UI automation engines, web browsers, control systems, a few other random things. 
 For the last few years though, I have been developing mostly for the web.

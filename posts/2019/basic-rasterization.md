@@ -1,7 +1,7 @@
 ---
 layout: post-layout.njk
 title: Basic rasterization / Draw with emojis
-description: Discovering basic algorithms to render linesm shapes, curves and filling them.
+description: Discovering basic algorithms to render lines, shapes, curves, and filling them.
 image: /stuff/posts/rasterization/cover.png
 imagefull: /stuff/posts/rasterization/cover.png
 imageWidth: 675
@@ -38,7 +38,9 @@ collapsible-panel pre {
 </style>
 <script async src="/stuff/posts/rasterization/rasterization.js"></script>
 
-Rasterization is the task of turning an image, described in vector graphics, into a bitmap on the screen. 
+An image is represented on a digital screen using pixels. A pixel is the smallest addressable unit of a digital screen, which means, when controlling a screen, we cannot control anything visually smaller than a pixel. Most screens are composed of a 2-dimensional array of pixels.
+
+Rasterization is the task of turning an image, described in vector graphics, into a pixel-map (bitmap) on the screen – which pixels are used to render the image.
 
 <figure>
   <img loading="lazy" width="159" height="204" src="/stuff/posts/rasterization/triangle.png" alt="Triangle rasterized">
@@ -50,24 +52,25 @@ Algebra and Geometry give us equations to describe shapes and lines, but when th
 
 Imagine if each pixel was represented using an emoji. The pixel is **on** - the emoji is showing, the pixel is **off** - the emoji is not showing. Abstracting that, one could render any vector shape using emojis. 
 
-This abstraction provided the idea of a fun JavaScript library I wrote - [LegraJS](https://legrajs.com/) which lets you draw using Lego like bricks. The bricks could be replacd with emojis :)
+This abstraction provided the idea of a fun JavaScript library I wrote - [LegraJS](https://legrajs.com/) which lets you draw using Lego like bricks. The bricks could be replaced with emojis :)
 
 ## Crude and Quick
 
 Rasterization can get really complicated in the real world, where one has to think about speed, memory, visual perception, anti-aliasing, etc. But in this blog post, I only talk about the simplest and the easiest methods.
 
-I will discuss methods used in [LegraJS](https://legrajs.com/) to draw basic vector primitives - lines, polygons, ellipses, bézier curves, etc.
+I will discuss the methods used in [LegraJS](https://legrajs.com/) to draw basic vector primitives - lines, polygons, ellipses, bézier curves, etc.
 
-Let's first define an abstract function to draw a pixel at `(x, y)`, i.e. draw an emoji at the loaction. This function is referred in the code that follows. 
+Let's first define an abstract function to draw a pixel at `(x, y)`, i.e. draw an emoji at the location. This function is invoked in the sample code that follows. 
 
 ```javascript
 // EMOJI_SIZE is the size of emoji in the font being used
 function drawEmoji(x, y) {
+  // We round the numbers to the nearest pixel
   const actualX = Math.round(x) * EMOJI_SIZE;
   const actualY = Math.round(Y) * EMOJI_SIZE;
   // Draw emoji at actualX, actualX on your preferred medium
   // e.g. on canvas:
-  var ctx = document.getElementById('canvas').getContext('2d');
+  var ctx = canvas.getContext('2d');
   ctx.fillText('😀', actualX, actualY);
 }
 ```
@@ -80,7 +83,7 @@ In the interactive demos I have created for this post, a grid cell represents a 
 
 In algebra, a line could be represented by the equation `y = mx + c`, here `m` represents the *slope* of the line and `c` represents the value where the line meets through the *y-axis*. 
 
-In graphics and animation, a common function, _**lerp**_ (Linear Interpolation) is used to return a number between two other numbers. _**lerp**_ is based on the above equation that repesents a line. 
+In graphics and animation, a common function, _**lerp**_ (Linear Interpolation) is used to return a number between two other numbers. _**lerp**_ is based on the above equation that represents a line. 
 
 ```javascript
 // Here t is between 0.0 and 1.0
@@ -91,7 +94,7 @@ function lerp(start, end, t) {
 
 This function can be extended to 2-dimensions to represent points `(x,y)` for different values of `t`. But, what values of `t` should we use? If we divide the line into `N` sections, we use `t = 1/N`. 
 
-Now, what is the appropriate value of N?
+Now, what is the appropriate value of `N`?
 
 We know the two endpoints of the line, we can tell if the change in `y` is more than change in `x` or vice-versa. The number `N` is the larger of the two changes. `N = Max(|y2 - y1|, |x2 - x1|)` or in javascript `const N = Math.max(Math.abs(y2,y1), Math.abs(x2, x1))`.
 
@@ -127,14 +130,14 @@ Now that we have tackled lines, drawing polygons is easy. A polygon is essential
 
 ## Filling a Polygon
 
-One of the simplest ways to fill a polygon is by using the *Scan-Line Filling Algorithm*. The idea is to scan the shape using horizontal lines (scanlines).
+One common way to fill a polygon is by using the *Scan-Line Filling Algorithm*. The idea is to scan the shape using horizontal lines (scanlines).
 The scanlines go from top of the polygon to the bottom. For each scanline, we determine at what points does the scanline intersect with the polygon. We arrange these intersecting points from left to right.
 
 <figure>
   <img loading="lazy" width="445" height="255" src="/stuff/posts/rasterization/scanline.png" alt="Polygon scanline">
 </figure>
 
-As we go from one point to another, we switch from *filling* mode to *non-filling* mode; and toggle between the states as we encounter each intersection point on the scan line. There is a bit more to consider here, specifically edge cases and optimization; more on this can found here: [Rasterizing polygons](http://www.cs.mun.ca/av/old/teaching/cg/notes/raster_poly.pdf), or expand the following section for pseudocode.
+As we go from one point to another, we switch from *filling* mode to *non-filling* mode; and toggle between the states as we encounter each intersection point on the scan line. There is a bit more to consider here, specifically edge cases and optimization; more on this can be found here: [Rasterizing polygons](http://www.cs.mun.ca/av/old/teaching/cg/notes/raster_poly.pdf), or expand the following section for pseudocode.
 
 <collapsible-panel label="Scanline Algorithm Details">
 <p>
@@ -153,7 +156,7 @@ Following describes the data structure in each row of the tables:
   ymin: number;
   ymax: number;
   x: number; <span class="token comment">// Initialized to Xmin</span>
-  iSlope: number; <span class="token comment">// Inverse of the slope of yje line: 1/m</span>
+  iSlope: number; <span class="token comment">// Inverse of the slope of the line: 1/m</span>
 }
 
 interface ActiveEdgeTableEntry {
@@ -184,7 +187,7 @@ interface ActiveEdgeTableEntry {
 of <em>x</em> coordinates from the AET.
 </p>
 <p style="padding-left: 32px;">
-<strong>(d)</strong> Increement <em>y</em> by 1, i.e. the next scanline.
+<strong>(d)</strong> Increment <em>y</em> by 1, i.e. the next scanline.
 </p>
 <p style="padding-left: 32px;">
 <strong>(e)</strong> For each non-vertical edge remaining in the AET, update <em>x</em> for the new <em>y</em> <br>(<code>edge.x = edge.x + edge.iSlope</code>)
@@ -202,16 +205,16 @@ Let's first define a couple of key properties of an ellipse:
   <img loading="lazy" width="353" height="173" src="/stuff/posts/rasterization/ellipse.png" alt="Polygon scanline">
 </figure>
 
-* **semi-major axis** `a` is half of the length of the major axis that runs through the center of the ellipse, it's focus point, and ends at the perimeter of the ellipse.
+* **semi-major axis** `a` is half of the length of the major axis that runs through the center of the ellipse, its focus point, and ends at the perimeter of the ellipse.
 * **semi-minor axis** `b` is the line orthogonal to the semi-major axis, with one end at the center and the other end at the perimeter.
 
 When `a = b`, the ellipse is a circle. 
 
-The most common algorithm to rasterize a circle is the [Midpoint circle algorithm](https://en.wikipedia.org/wiki/Midpoint_circle_algorithm). This was adapted by [Bresenham](http://members.chello.at/~easyfilter/bresenham.html) and generalized for ellipses. I have been using [McIlroy's algorithm](https://www.cs.dartmouth.edu/~doug/155.pdf), which build's on Bresenham's work.
+The most common algorithm to rasterize a circle is the [Midpoint circle algorithm](https://en.wikipedia.org/wiki/Midpoint_circle_algorithm). This was adapted by [Bresenham](http://members.chello.at/~easyfilter/bresenham.html) and generalized for ellipses. I have been using [McIlroy's algorithm](https://www.cs.dartmouth.edu/~doug/155.pdf), which builds on Bresenham's work.
 
 <draw-ellipse-canvas></draw-ellipse-canvas>
 
-The links to the algorithms describe them in more detail. Fllowing is the quick javascript implemenetation:
+The links to the algorithms describe them in more detail. Following is the quick javascript implementation:
 
 ```javascript
 // xc, xy is the center of the ellipse
@@ -266,14 +269,14 @@ function drawEllipse(xc, yc, a, b) {
 ## Filling an Ellipse
 
 The scanline algorithm used for filling polygons can be adopted to work with Bresenham's Ellipse algorithm described above.
-Unlike a polygon, an ellipse is symmetrical, so what happens in onw quadrant of the ellipse could be reflected to the other three quadrants. 
+Unlike a polygon, an ellipse is symmetrical, so what happens in one quadrant of the ellipse could be reflected to the other three quadrants. 
 I have adopted the implementation described here: [Drawing Ellipses Using Filled Rectangles](http://enchantia.com/graphapp/doc/tech/ellipses.html)
 
 <draw-ellipse-canvas fill></draw-ellipse-canvas>
 
 ## Bézier curve
 
-Bézier curves are used to model smooth curves in vector graphics. Often complex paths cane be constructed using a series of bézier curves. (*Aside:* These curves are also used in defining easing functions in UI animations, or in easing robotic movements)
+Bézier curves are used to model smooth curves in vector graphics. Often complex paths can be constructed using a series of bézier curves. (*Aside:* These curves are also used in defining easing functions in UI animations, or in easing robotic movements)
 
 A bézier curve is defined using four parameterized points. Two end points of the curve, and two control points. Try moving these points to see what pixels get rendered:
 
