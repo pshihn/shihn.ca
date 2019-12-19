@@ -319,3 +319,5 @@ This post is, essentially, me aggregating some notes and thoughts I compiled whe
 The interactive demos here are inspired from Amit Patel's [Red Blob Games](https://www.redblobgames.com/) blog. 
 
 Ciao!
+
+p.s. Slide the emoji bar below to indicate how much joy this post brought you
