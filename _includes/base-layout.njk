@@ -258,6 +258,9 @@
     margin: .5em 0;
     background-color: #f6f6f6;
   }
+  code[class*="language-"] {
+    padding: 0;
+  }
   #siteName {
     letter-spacing: 0.5px;
     margin: 0 8px;
@@ -279,6 +282,26 @@
   @media(max-width: 600px) {
     .card-title {
       font-size: 18px;
+    }
+  }
+
+  @media(max-width: 500px) {
+    .cardpost.horizontal.layout {
+      -ms-flex-direction: column;
+      -webkit-flex-direction: column;
+      flex-direction: column;
+    }
+    .card-image {
+      width: 100%;
+      height: 110px;
+      border-radius: 5px 5px 0 0;
+      overflow: hidden;
+    }
+    .card-gradient {
+      width: 100%;
+      top: initial;
+      height: 25%;
+      background: linear-gradient(to top, var(--card-bg, rgba(0,0,0,0)), var(--card-bg-t, rgba(0,0,0,0)));
     }
   }
 
