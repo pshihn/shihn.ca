@@ -18,12 +18,23 @@ main {
   text-align: center;
   max-width: 1130px;
 }
+.welcome-message {
+  max-width: 600px;
+  margin: 1em auto 24px;
+  text-align: left;
+  padding: 0 10px;
+}
 @media(max-width: 600px) {
   main {
     padding: 16px 8px 32px;
   }
 }
 </style>
+
+<p class="welcome-message">
+  I often tinker around in my spare time to make something whimsical, and sometimes useful. 
+  Here you will find links to some of these creations 👇
+</p>
 
 <div class="creations-panel horizontal layout center wrap">
 {% for post in links %}
