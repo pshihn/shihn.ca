@@ -45,6 +45,7 @@
   }
 
   body {
+    overflow-x: hidden;
     margin: 0;
     font-weight: 400;
     line-height: 1.756;
@@ -286,22 +287,24 @@
   }
 
   @media(max-width: 500px) {
-    .cardpost.horizontal.layout {
-      -ms-flex-direction: column;
-      -webkit-flex-direction: column;
-      flex-direction: column;
-    }
     .card-image {
-      width: 100%;
-      height: 110px;
-      border-radius: 5px 5px 0 0;
-      overflow: hidden;
+      width: 100px;
+      height: 100px;
+      align-self: center;
+      border-radius: 0 50% 50% 0;
+      box-shadow: 0 3px 3px -2px rgba(0, 0, 0, .2), 0 3px 4px 0 rgba(0, 0, 0, .14), 0 1px 8px 0 rgba(0, 0, 0, .12);
+      margin-left: -18px;
     }
     .card-gradient {
-      width: 100%;
-      top: initial;
-      height: 25%;
-      background: linear-gradient(to top, var(--card-bg, rgba(0,0,0,0)), var(--card-bg-t, rgba(0,0,0,0)));
+      display: none;
+    }
+    .card-footer,
+    .card-description {
+      letter-spacing: none;
+    }
+    .card-content {
+      padding: 10px 12px 10px 16px;
+      line-height: 1.35;
     }
   }
 
