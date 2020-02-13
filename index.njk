@@ -14,7 +14,7 @@ pagination:
   }
   
   #postSection {
-    padding: 16px 8px;
+    padding: 0 8px 16px;
     max-width: 600px;
     margin: 0 auto;
   }
@@ -22,7 +22,7 @@ pagination:
   #creationSection {
     padding: 8px;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 30px;
   }
 
   a.inline-link, a.inline-link:hover, a.inline-link:visited {
@@ -42,34 +42,16 @@ pagination:
     text-align: center;
   }
 
-  .welcome-message {
-    margin-bottom: 40px;
-    text-align: center;
-    font-size: 18px;
-  }
-
-  .creation-card {
-    padding: 48px 32px;
-    border-radius: 40px 0px;
-  }
-  .creation-card-glass {
-    top: 48px;
-    bottom: 48px;
-  }
-  .creation-card::before {
-    border-radius: 40px 0px;
-  }
-
   @media(max-width: 600px) {
-    #creationSection {
-      margin-top: 0px;
+    .welcome-message {
+      margin-top: 0;
     }
   }
 </style>
 
 <section id="postSection">
   <p class="welcome-message">
-    👋🏽 Hi! Here are some of my recent blog posts and creations 
+    👋🏽 Hi, I'm Preet. I write code for a living, and for fun. I focus mostly on the fun parts on this website. Here are some of my recent blog posts 👇
   </p>
 
   {% for post in posts %}
@@ -96,15 +78,23 @@ pagination:
 </section>
 
 <section id="creationSection">
+  <div style="max-width: 600px; margin: 0 auto; text-align: left;">
+    <p class="welcome-message">
+      And sometimes I make things. Here are some recent creations 👇
+    </p>
+  </div>
+
   <div class="creations-panel horizontal layout center wrap">
-  {% for post in collections.featured | reverse %}
-    <article class="creation-card" style="{{ post.data.themebg | transparentize }} --card-fg:{{ post.data.themefg }}; background-image: url({{ post.data.image }});">
-      <div class="creation-card-glass"></div>
-      <a class="card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.data.title }}">
-        <div class="card-title">{{ post.data.title }}</div>
-        <div class="card-description">{{ post.data.description }}</div>
-      </a>
-    </article>
+  {% for post in links | reverse %}
+    {% if loop.index0 < 3 %}
+      <article class="creation-card" style="{{ post.themebg | transparentize }} --card-fg:{{ post.themefg }}; background-image: url({{ post.image }});">
+        <div class="creation-card-glass"></div>
+        <a class="card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.title }}">
+          <div class="card-title">{{ post.title }}</div>
+          <div class="card-description">{{ post.description }}</div>
+        </a>
+      </article>
+    {% endif %}
   {% endfor %}
   </div>
   <div class="morePanel">
