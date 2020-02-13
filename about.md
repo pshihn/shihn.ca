@@ -2,7 +2,7 @@
 layout: about-layout.njk
 ---
 
-👋🏽 I'm Preet - A Canadian 🇨🇦 engineer, living in San Francisco. I write code for a living and for fun. 
+👋🏽 I'm Preet - A Canadian 🇨🇦 engineer, living in San Francisco. I write code for a living and for fun. I am on [Twitter](https://twitter.com/preetster), say Hi. 
 
 ## Current technical interests
 🌐 The Open Web<br>

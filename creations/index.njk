@@ -1,10 +1,10 @@
 ---
 layout: content-base-layout.njk
 pagination:
-  data: collections.creation
+  data: links
   size: 500
   reverse: true
-  alias: creations
+  alias: links
 ---
 <style>
 main {
@@ -24,13 +24,14 @@ main {
   }
 }
 </style>
+
 <div class="creations-panel horizontal layout center wrap">
-{% for post in creations %}
-  <article class="creation-card" style="{{ post.data.themebg | transparentize }} --card-fg:{{ post.data.themefg }}; background-image: url({{ post.data.image }});">
+{% for post in links %}
+  <article class="creation-card" style="{{ post.themebg | transparentize }} --card-fg:{{ post.themefg }}; background-image: url({{ post.image }});">
     <div class="creation-card-glass"></div>
-    <a class="card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.data.title }}">
-      <div class="card-title">{{ post.data.title }}</div>
-      <div class="card-description">{{ post.data.description }}</div>
+    <a class="card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.title }}">
+      <div class="card-title">{{ post.title }}</div>
+      <div class="card-description">{{ post.description }}</div>
     </a>
   </article>
 {% endfor %}
