@@ -143,7 +143,7 @@ Take a moment to play with this interactive demo of Dithering (Yes, this is the 
 
 I was trying to solve a problem where I could map images created by [LegraJS](https://legrajs.com/) to actual available Lego pieces — Figure out what Lego pieces one would need in what color. This led me to image color reduction and then to Dithering. I have since discovered that dithering is not the right solution for that use case... more on that later. But, it was fascinating to discover the process. I was aware of dithering but never got around to actually implementing it. Code for the TypeScript implementation I wrote can be found on the [cielab-dither](https://github.com/pshihn/cielab-dither) repo.
 
-For the interactive demo on this page, I used this implementation and run the algorithm in a WebWorker. I wrapped the demo as a WebComponent and just drome the element wherever I needed in the blog post: `<dither-view></dither-view>`
+For the interactive demo on this page, I used this implementation and run the algorithm in a WebWorker. I wrapped the demo as a WebComponent and just drop the element wherever I needed in the blog post: `<dither-view></dither-view>`
 
 <img loading="lazy" width="200" height="200" src="/stuff/posts/dithering/fig10.png" style="display: block; margin: 0 auto 1em;border-radius: 50%;">
 
