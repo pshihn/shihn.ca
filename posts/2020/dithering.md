@@ -116,6 +116,8 @@ The algorithm can now easily be extrapolated to the CIELAB color space. The quan
   <img alt="Error diffusion" loading="lazy" width="600" height="195" src="/stuff/posts/dithering/fig9.png">
 </figure>
 
+*Note: Since writing this, people have suggested that dithering would work better in RGB space causing less hue shift. Finding the closest color using CIELAB color space but distribute the quantization error in RGB. I tested this and the color boundaries do look better but the image brightness seems to be affected as well. When working with binary images though, certain images created a banding effect around some color boundaries, which did not appear in CIELAB space.*
+
 ## Formalize the algorithm
 
 Floyd–Steinberg dithering explained above can be formalized as follows:
