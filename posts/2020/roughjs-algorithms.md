@@ -9,7 +9,7 @@ imageHeight: 669
 themebg: 'rgba(255,255,245,1)'
 themefg: '#000'
 date: 2020-04-28
-tags: ['posts']
+tags: ['xposts']
 ---
 
 <style>
@@ -46,7 +46,7 @@ collapsible-panel pre {
   box-sizing: border-box;
 }
 code {
-  word-break: break-all;
+  word-break: break-word;
 }
 #articleBody blockquote a {
   box-shadow: 0 2px var(--highlight-pink);
@@ -54,7 +54,7 @@ code {
 }
 </style>
 
-First of all, [RoughJS](https://roughjs.com/) is a small-ish (\<9kB) JavaScript library that lets you draw in a *sketchy, hand-drawn-like* style. It lets you draw on `<canvas>` and with `SVG`. This blog post is to address the most common issue filed with RoughJS: **How does it work?**
+First of all, [RoughJS](https://roughjs.com/) is a small-ish (\<9kB) JavaScript graphics library that lets you draw in a *sketchy, hand-drawn-like* style. It lets you draw on `<canvas>` and with `SVG`. This blog post is to address the most common issue filed with RoughJS: **How does it work?**
 
 <figure>
   <img alt="squares" loading="lazy" width="648" height="242" src="/stuff/posts/roughjs/rough1.png">
@@ -74,15 +74,13 @@ Quick links to sections below:
 
 ## A bit of history
 
-Hand-drawn graphs and diagrams have their own special charm. I wondered what if there was a way to draw such charts through code. Emulate hand-drawing as close as possible and yet be legible and programmable. As I started to think about it, I realized it would be better to focus on primitives - lines, polygons, ellipses, and curves, creating a full 2D graphics library. Charting and Diagramming libraries and apps could be built on top of it. 
-
-Most successful side projects have some roots in the creator's day job, or are somehow related to a problem they are trying to solve. This was neither. It was just an intellectual exercise, which made it more fun. 
+Hand-drawn graphs and diagrams have their own special charm. I wondered what if there were a way to draw such charts through code. Emulate hand-drawing as close as possible and yet be legible and programmable. I decided to focus on primitives - lines, polygons, ellipses, and curves, creating a full 2D graphics library. Charting and Diagramming libraries and apps could be built on top of it. 
 
 After some quick research, I came across this paper by [Jo Wood](https://www.gicentre.net/jwo) and others, titled [Sketchy rendering for information visualization](https://openaccess.city.ac.uk/id/eprint/1274/). The techniques described here formed the basis of the library, especially for drawing lines and ellipses. 
 
-I wrote the first version in 2017 which only worked on Canvas. Shared it on Hacker News and forgot about it. Once the problem was solved, I lost interest. A year later I was working a lot with SVG, and decided to adapt RoughJS to also work with SVG. I also redesigned the API to be more basic and focus on the simple vector graphic primitives. I shared the 2.0 version of Hacker News, and it blew up. It was the [second most popular post of ShowHN](https://bestofshowhn.com/2018) in 2018 and the [second most of all ShowHN under JavaScript](https://bestofshowhn.com/search?q=javascript). 
+I wrote the first version in 2017 which only worked on Canvas. Once the problem was solved, I lost interest. A year later I was working a lot with SVG, and decided to adapt RoughJS to also work with SVG. I also redesigned the API to be more basic and focus on the simple vector graphic primitives. I shared the 2.0 version of Hacker News and, surprisingly, it blew up. It was the [second most popular post of ShowHN](https://bestofshowhn.com/2018) in 2018.
 
-The success was surprising because I thought it was just a silly library. But its playful nature is likely the reason why it got so much attention, not the practical use cases of it. People have since created some amazing things with RoughJS, e.g. [Excalidraw](https://excalidraw.com/), [Why do Cats & Dogs...](https://whydocatsanddogs.com/), [Charting libs](https://github.com/jwilber/roughViz)
+People have since created some amazing things with RoughJS — [Excalidraw](https://excalidraw.com/), [Why do Cats & Dogs...](https://whydocatsanddogs.com/), [roughViz Charting library](https://github.com/jwilber/roughViz), to name a few.
 
 Now let's get to the algorithms....
 
@@ -105,7 +103,13 @@ Hand drawn lines are never straight and often develop a *bowing* curvature (desc
   <img alt="Rough lines" loading="lazy" width="600" height="146" src="/stuff/posts/roughjs/line.png">
 </figure>
 
-Each line is also drawn twice to make it feel more sketchy. 
+When drawing by hand, people sometimes go quickly back and forth on the line. This couls be either to highlight the line, or just as an adjustment to the straightness of the line. It looks something like this:
+
+<figure>
+  <img alt="Rough lines" loading="lazy" width="600" height="501" src="/stuff/posts/roughjs/hand-line.jpg">
+</figure>
+
+To give this extra sketchy effect, RoughJS draws the line twice to make it feel more sketchy. I do plan to make this more configurable in the future. 
 
 <p class="interactive-caption">
 Try sketching lines on this interactive canvas surface. Adjust the roughness to see the lines change:
