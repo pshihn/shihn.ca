@@ -2,12 +2,12 @@
 layout: post-layout.njk
 title: How to emulate hand-drawn shapes / Algorithms behind RoughJS
 description: A dive into graphics algorithms used in RoughJS
-image: /stuff/posts/dithering/monalisa-bw.png
-imagefull: /stuff/posts/dithering/cover.png
+image: /stuff/posts/roughjs/theme.png
+imagefull: /stuff/posts/roughjs/social.png
 imageWidth: 1280
 imageHeight: 669
-themebg: 'rgba(66,66,66,1)'
-themefg: '#fff'
+themebg: 'rgba(255,255,245,1)'
+themefg: '#000'
 date: 2020-04-28
 tags: ['posts']
 ---
