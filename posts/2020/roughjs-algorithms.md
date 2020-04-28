@@ -54,7 +54,7 @@ code {
 }
 </style>
 
-First of all, [RoughJS](https://roughjs.com/) is a small-ish (\<9kB) JavaScript library that lets you draw in a *skethcy, hand-drawn-like* style. It lets you draw on `<canvas>` and with `SVG`. This blog post is to address the most common issue filed with RoughJS: **How does it work?**
+First of all, [RoughJS](https://roughjs.com/) is a small-ish (\<9kB) JavaScript library that lets you draw in a *sketchy, hand-drawn-like* style. It lets you draw on `<canvas>` and with `SVG`. This blog post is to address the most common issue filed with RoughJS: **How does it work?**
 
 <figure>
   <img alt="squares" loading="lazy" width="648" height="242" src="/stuff/posts/roughjs/rough1.png">
@@ -74,13 +74,13 @@ Quick links to sections below:
 
 ## A bit of history
 
-Hand-drawn graphs and diagrams have their own special charm. I wondered what if there was a way to draw such charts through code. Emulate hand-drawing as close as possible and yet be legible and programmable. As I started to think about it, I realized it would be better to focus on primitives - lines, polygons, ellipses, and curves, creating a full 2D graphics library. Charting and Diagraming libraries and apps could be built on top of it. 
+Hand-drawn graphs and diagrams have their own special charm. I wondered what if there was a way to draw such charts through code. Emulate hand-drawing as close as possible and yet be legible and programmable. As I started to think about it, I realized it would be better to focus on primitives - lines, polygons, ellipses, and curves, creating a full 2D graphics library. Charting and Diagramming libraries and apps could be built on top of it. 
 
-Most successful side projects have some roots in the creator's day job, or is somehow related to a problem they are trying to solve. This was neither. It was just an intellectual exercise, which made it more fun. 
+Most successful side projects have some roots in the creator's day job, or are somehow related to a problem they are trying to solve. This was neither. It was just an intellectual exercise, which made it more fun. 
 
 After some quick research, I came across this paper by [Jo Wood](https://www.gicentre.net/jwo) and others, titled [Sketchy rendering for information visualization](https://openaccess.city.ac.uk/id/eprint/1274/). The techniques described here formed the basis of the library, especially for drawing lines and ellipses. 
 
-I wrote the first version in 2017 which only worked on Canvas. Shared it on Hacker News and forgot about it. Once the problem was solved, I lost interest. A year later I was working a lot with SVG, and decided to adapt RoughJS to also work with SVG. I also redesigned the the API to be more basic and focus on the simple vector graphic primitives. I shared the 2.0 version of Hacker News, and it blew up. It was the [second best post of Show HN](https://bestofshowhn.com/2018) in 2018 and the [second best of in Javascript of all time](https://bestofshowhn.com/search?q=javascript). 
+I wrote the first version in 2017 which only worked on Canvas. Shared it on Hacker News and forgot about it. Once the problem was solved, I lost interest. A year later I was working a lot with SVG, and decided to adapt RoughJS to also work with SVG. I also redesigned the API to be more basic and focus on the simple vector graphic primitives. I shared the 2.0 version of Hacker News, and it blew up. It was the [second most popular post of ShowHN](https://bestofshowhn.com/2018) in 2018 and the [second most of all ShowHN under JavaScript](https://bestofshowhn.com/search?q=javascript). 
 
 The success was surprising because I thought it was just a silly library. But its playful nature is likely the reason why it got so much attention, not the practical use cases of it. People have since created some amazing things with RoughJS, e.g. [Excalidraw](https://excalidraw.com/), [Why do Cats & Dogs...](https://whydocatsanddogs.com/), [Charting libs](https://github.com/jwilber/roughViz)
 
@@ -94,12 +94,12 @@ The fundamental concept behind emulating hand-drawn shapes is randomness. When y
   <img alt="Randomness circle" loading="lazy" width="400" height="253" src="/stuff/posts/roughjs/roughness.png">
 </figure>
 
-Imagine a point `A` and a circle around it. `A` is now replaced by a random point within that circle. The area of this circle of randomness is controlled by the `roughness` value. Most coordinates are such randomized when drawing shapes. 
+Imagine a point `A` and a circle around it. `A` is now replaced by a random point within that circle. The area of this circle of randomness is controlled by the `roughness` value. Most coordinates are randomized like this when drawing shapes. 
 
 <a name="lines"></a>
 ## Lines
 
-Hand drawn lines are never stright and often develop a *bowing* curvature (described [here](https://openaccess.city.ac.uk/id/eprint/1274/)). We randomize the two end points of the line based on the roughness. Then we also pick two other random points around the 50% and 75% marks along the line. Connecting these points by a curve gives the *bowing* effect. 
+Hand drawn lines are never straight and often develop a *bowing* curvature (described [here](https://openaccess.city.ac.uk/id/eprint/1274/)). We randomize the two end points of the line based on the roughness. Then we also pick two other random points around the 50% and 75% marks along the line. Connecting these points by a curve gives the *bowing* effect. 
 
 <figure>
   <img alt="Rough lines" loading="lazy" width="600" height="146" src="/stuff/posts/roughjs/line.png">
@@ -112,7 +112,7 @@ Try sketching lines on this interactive canvas surface. Adjust the roughness to 
 </p>
 <rough-draw></rough-draw>
 
-When drawing by hand, longer lines tend to get less straight and more curvy. So, the randomness of the offsets to create the `bowing` effect are a function of the line's length and the `randomness` value. This, however does not scale for really long lines. In the image below, for example, concentric squares are drawn with the same random seeds - i.e. they are essentially the same random shape, but scaled differently. 
+When drawing by hand, longer lines tend to get less straight and more curvy. So, the randomness of the offsets to create the `bowing` effect are a function of the line's length and the `randomness` value. This, however, does not scale for really long lines. In the image below, for example, concentric squares are drawn with the same random seeds - i.e. they are essentially the same random shape, but scaled differently. 
 
 <figure>
   <img alt="Rough squares" loading="lazy" width="400" height="400" src="/stuff/posts/roughjs/r6.jpg">
@@ -127,15 +127,15 @@ You will notice that the longer edges tend to look a bit more `rough` than the i
 <a name="ellipses"></a>
 ## Ellipses (and circles)
 
-Take a piece of paper and draw a bunch of circles as quickly as your can, in one continous motion. Here's what it looks like when I did that:
+Take a piece of paper and draw a bunch of circles as quickly as your can, in one continuous motion. Here's what it looks like when I did that:
 
 <figure>
   <img alt="Hand drawn circles" loading="lazy" width="600" height="341" src="/stuff/posts/roughjs/circle-drawn.jpg">
 </figure>
 
-Notice that that the start and end point of the loop don't actually meet unless you are very careful. RoughJS tries to achieve this while making it look more complete (adapted from the [giCenter paper](https://openaccess.city.ac.uk/id/eprint/1274/)).
+Notice that the start and end point of the loop don't actually meet unless you are very careful. RoughJS tries to achieve this while making it look more complete (adapted from the [giCenter paper](https://openaccess.city.ac.uk/id/eprint/1274/)).
 
-The algorithm finds `n` points on an ellipse, where `n` is determined by the sie of the ellipse. Each point is then randomized by  its `roughness`. A curve is then fitted through these points. To achieve the *ends not meeting effect* the second to last point does not meet the first point. Instead, it joins second and third point.
+The algorithm finds `n` points on an ellipse, where `n` is determined by the size of the ellipse. Each point is then randomized by  its `roughness`. A curve is then fitted through these points. To achieve the *ends not meeting effect* the second to last point does not meet the first point. Instead, it joins the second and third points.
 
 <figure>
   <img alt="Rough Circle" loading="lazy" width="562" height="564" src="/stuff/posts/roughjs/ellipse.png">
@@ -175,7 +175,7 @@ Filling squares like the example above is easy, but you get into some trouble wh
   <img alt="Concave polygon with overflow" loading="lazy" width="211" height="300" src="/stuff/posts/roughjs/r2.jpg">
 </figure>
 
-In fact the above image is form a bug report in an earlier version of RoughJS. Since then I have updated the hachure filling algorithm to an adapted version of [Scanline fill technique](https://en.wikipedia.org/wiki/Flood_fill#Scanline_fill). 
+In fact the above image is from a bug report in an earlier version of RoughJS. Since then I have updated the hachure filling algorithm to an adapted version of [Scanline fill technique](https://en.wikipedia.org/wiki/Flood_fill#Scanline_fill). 
 
 The **Scan-Line Filling Algorithm** can be used to fill any polygon. The idea is to scan the polygon using horizontal lines (scanlines). The scanlines go from the top of the polygon to the bottom. For each scanline, we determine at what points does the scanline intersect with the polygon. We arrange these intersecting points from left to right.
 
@@ -269,7 +269,7 @@ RoughJS also supports other fill styles, but they are all derived from the same 
 
 Everything in RoughJS gets normalized to curves. Lines, Polygons, Ellipses, etc. So creating a sketchy curve is natural extension. In RoughJS you provide a set of points on the curve, and [Curve fitting](https://en.wikipedia.org/wiki/Curve_fitting) is used to translate these into a set of Cubic Bezier Curves. 
 
-Each Bezier curve has two end points, and two control points. By randmoizing these based on `roughness`, one can create sketchy curves in the same fashion. 
+Each Bezier curve has two endpoints, and two control points. By randomizing these based on `roughness`, one can create sketchy curves in the same fashion. 
 
 <figure>
   <img alt="Sine wave" loading="lazy" width="397" height="192" src="/stuff/posts/roughjs/sine.png">
@@ -277,7 +277,7 @@ Each Bezier curve has two end points, and two control points. By randmoizing the
 
 ### Filling Curves
 
-Filling curves, however, requires the opposite. Instead of normalizing everything to a curve, the curve is normalized to a polygon. Once you have a polygon, scan-line algorithm can be used to fill the curved shape. 
+Filling curves, however, requires the opposite. Instead of normalizing everything to a curve, the curve is normalized to a polygon. Once you have a polygon, the scan-line algorithm can be used to fill the curved shape. 
 
 One can sample the points on a curve at a desired rate by using the [Cubic Bezier Curve equation](https://en.wikipedia.org/wiki/B%C3%A9zier_curve#Cubic_B%C3%A9zier_curves).
 
@@ -285,9 +285,9 @@ One can sample the points on a curve at a desired rate by using the [Cubic Bezie
   <img alt="Bezier curve" loading="lazy" width="304" height="194" src="/stuff/posts/roughjs/bcurve1.png">
 </figure>
 
-Using a sampling rate based on the hachure density can give you enough points to fill the shape. But it's not very efficient. If the a section of the curve is sharp, you'd want more points. If the section of the curve is nearly a straight line, you'd want fewer points. One technique is to figure out how *curvy/flat* the curve is. If it's too curvy, split the curve into two smaller curves. If it's flat, then just treat it as a line. 
+Using a sampling rate based on the hachure density can give you enough points to fill the shape. But it's not very efficient. If the section of the curve is sharp, you'd want more points. If the section of the curve is nearly a straight line, you'd want fewer points. One technique is to figure out how *curvy/flat* the curve is. If it's too curvy, split the curve into two smaller curves. If it's flat, then just treat it as a line. 
 
-The flatness of the curve is calculated using the medthod described in [this blog post](https://seant23.wordpress.com/2010/11/12/offset-bezier-curves/). The flatness value is compared to a tolerance value to decide whether to split the curve or not. 
+The flatness of the curve is calculated using the method described in [this blog post](https://seant23.wordpress.com/2010/11/12/offset-bezier-curves/). The flatness value is compared to a tolerance value to decide whether to split the curve or not. 
 
 Here's the same curve with a tolerance level of 0.7:
 
@@ -303,7 +303,7 @@ Following are the points generated with distance values of `0.15`, `0.75`, `1.5`
   <img alt="Bezier curve" loading="lazy" width="800" height="497" src="/stuff/posts/roughjs/bcurve3.png">
 </figure>
 
-Based on the *roughness* of the shape, once can set an approproate value of distance. Once you have the point to a polygon, curved shapes fill nicely:
+Based on the *roughness* of the shape, once can set an appropriate value of distance. Once you have the point to a polygon, curved shapes fill nicely:
 
 <figure>
   <img alt="curves" loading="lazy" width="605" height="212" src="/stuff/posts/roughjs/curves.png">
@@ -312,11 +312,11 @@ Based on the *roughness* of the shape, once can set an approproate value of dist
 <a name="svg"></a>
 ## SVG Paths
 
-SVG [Paths](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) are very powerful and can be used to create all sorts of amazing drawings, which also makes them a but tricky to work with. 
+SVG [Paths](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths) are very powerful and can be used to create all sorts of amazing drawings, which also makes them a bit tricky to work with. 
 
-RoughJS parses the path and normalized the path into only three operations: **Move**, **Line**, and **Cubic Curve**. ([path-data-parser](https://github.com/pshihn/path-data-parser)). Once normalized the shape can be draw using techniques described above to draw lines and curves. 
+RoughJS parses the path and normalizes the path into only three operations: **Move**, **Line**, and **Cubic Curve**. ([path-data-parser](https://github.com/pshihn/path-data-parser)). Once normalized, the shape can be drawn using techniques described above to draw lines and curves. 
 
-The [points-on-path](https://github.com/pshihn/points-on-path) package combines the path normalization and curve point sampling to estimate the approproate points on the path. 
+The [points-on-path](https://github.com/pshihn/points-on-path) package combines the path normalization and curve point sampling to estimate the appropriate points on the path. 
 
 Following is rough estimation of points for the path `M240,100c50,0,0,125,50,100s0,-125,50,-150s175,50,50,100s-175,50,-300,0s0,-125,50,-100s0,125,50,150s0,-100,50,-100`
 
