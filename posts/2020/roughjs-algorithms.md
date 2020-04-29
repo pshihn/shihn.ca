@@ -74,25 +74,25 @@ Quick links to sections below:
 
 ## A bit of history
 
-Hand-drawn graphs and diagrams have their own special charm. I wondered what if there were a way to draw such charts through code. Emulate hand-drawing as close as possible and yet be legible and programmable. I decided to focus on primitives - lines, polygons, ellipses, and curves, creating a full 2D graphics library. Charting and Diagramming libraries and apps could be built on top of it. 
+Hand-drawn graphs and diagrams have their own special charm. I wondered what if there were a way to draw such charts through code. Emulate hand-drawing as close as possible and yet be legible and programmable. I decided to focus on primitives - lines, polygons, ellipses, and curves, creating a full 2D graphics library. Charting/Diagramming libraries and apps could be built on top of it. 
 
 After some quick research, I came across this paper by [Jo Wood](https://www.gicentre.net/jwo) and others, titled [Sketchy rendering for information visualization](https://openaccess.city.ac.uk/id/eprint/1274/). The techniques described here formed the basis of the library, especially for drawing lines and ellipses. 
 
 I wrote the first version in 2017 which only worked on Canvas. Once the problem was solved, I lost interest. A year later I was working a lot with SVG, and decided to adapt RoughJS to also work with SVG. I also redesigned the API to be more basic and focus on the simple vector graphic primitives. I shared the 2.0 version of Hacker News and, surprisingly, it blew up. It was the [second most popular post of ShowHN](https://bestofshowhn.com/2018) in 2018.
 
-People have since created some amazing things with RoughJS — [Excalidraw](https://excalidraw.com/), [Why do Cats & Dogs...](https://whydocatsanddogs.com/), [roughViz Charting library](https://github.com/jwilber/roughViz), to name a few.
+People have since created some amazing things with RoughJS — [Excalidraw](https://excalidraw.com/), [Why do Cats & Dogs...](https://whydocatsanddogs.com/), [roughViz charting library](https://github.com/jwilber/roughViz), to name a few.
 
 Now let's get to the algorithms....
 
 <a name="roughness"></a>
 ## Roughness 
-The fundamental concept behind emulating hand-drawn shapes is randomness. When you draw anything by hand, no two shapes will be exactly the same. Nothing is exact. So, pretty much every spatial point in RoughJS is adjusted by a random offset. The amount of randomness is described by a numeric parameter called `roughness`. 
+The fundamental concept behind emulating hand-drawn shapes is randomness. When you draw anything by hand, no two shapes will be exactly the same. Nothing is exact. So, every spatial point in RoughJS is adjusted by a random offset. The amount of randomness is described by a numeric parameter called `roughness`. 
 
 <figure>
   <img alt="Randomness circle" loading="lazy" width="400" height="253" src="/stuff/posts/roughjs/roughness.png">
 </figure>
 
-Imagine a point `A` and a circle around it. `A` is now replaced by a random point within that circle. The area of this circle of randomness is controlled by the `roughness` value. Most coordinates are randomized like this when drawing shapes. 
+Imagine a point `A` and a circle around it. `A` is now replaced by a random point within that circle. The area of this circle of randomness is controlled by the `roughness` value.
 
 <a name="lines"></a>
 ## Lines
@@ -103,7 +103,7 @@ Hand drawn lines are never straight and often develop a *bowing* curvature (desc
   <img alt="Rough lines" loading="lazy" width="600" height="146" src="/stuff/posts/roughjs/line.png">
 </figure>
 
-When drawing by hand, people sometimes go quickly back and forth on the line. This couls be either to highlight the line, or just as an adjustment to the straightness of the line. It looks something like this:
+When drawing by hand, people sometimes go quickly back and forth on the line. This could be either to highlight the line, or just as an adjustment to the straightness of the line. It looks something like this:
 
 <figure>
   <img alt="Rough lines" loading="lazy" width="600" height="501" src="/stuff/posts/roughjs/hand-line.jpg">
@@ -122,7 +122,7 @@ When drawing by hand, longer lines tend to get less straight and more curvy. So,
   <img alt="Rough squares" loading="lazy" width="400" height="400" src="/stuff/posts/roughjs/r6.jpg">
 </figure>
 
-You will notice that the longer edges tend to look a bit more `rough` than the inner ones. So, another dampening factor is also added based on the length of the line. The dampening factor is applied as a step function at different lengths.
+You will notice that the edges on outer squares tend to look a bit more `rough` than the inner ones. So, a dampening factor is also added based on the length of the line. The dampening factor is applied as a step function at different lengths.
 
 <figure>
   <img alt="Rough squares" loading="lazy" width="400" height="400" src="/stuff/posts/roughjs/r7.jpg">
@@ -307,7 +307,7 @@ Following are the points generated with distance values of `0.15`, `0.75`, `1.5`
   <img alt="Bezier curve" loading="lazy" width="800" height="497" src="/stuff/posts/roughjs/bcurve3.png">
 </figure>
 
-Based on the *roughness* of the shape, once can set an appropriate value of distance. Once you have the point to a polygon, curved shapes fill nicely:
+Based on the *roughness* of the shape, once can set an appropriate value of distance. Once you have all the vertices of the polygon, curved shapes fill nicely:
 
 <figure>
   <img alt="curves" loading="lazy" width="605" height="212" src="/stuff/posts/roughjs/curves.png">
