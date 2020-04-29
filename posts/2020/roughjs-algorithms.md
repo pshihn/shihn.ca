@@ -74,7 +74,7 @@ Quick links to sections below:
 
 ## A bit of history
 
-Hand-drawn graphs and diagrams have their own special charm. I wondered what if there were a way to draw such charts through code. Emulate hand-drawing as close as possible and yet be legible and programmable. I decided to focus on primitives - lines, polygons, ellipses, and curves, creating a full 2D graphics library. Charting/Diagramming libraries and apps could be built on top of it. 
+Charmed by images of hand-drawn graphs, diagrams, and sketches; like I true nerd, I wondered what if there were a way to draw such figures through code. Emulate hand-drawing as close as possible and yet be legible and programmable. I decided to focus on primitives - lines, polygons, ellipses, and curves, creating a full 2D graphics library. Charting/Diagramming libraries and apps could be built on top of it. 
 
 After some quick research, I came across this paper by [Jo Wood](https://www.gicentre.net/jwo) and others, titled [Sketchy rendering for information visualization](https://openaccess.city.ac.uk/id/eprint/1274/). The techniques described here formed the basis of the library, especially for drawing lines and ellipses. 
 
