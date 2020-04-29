@@ -54,7 +54,7 @@ code {
 }
 </style>
 
-First of all, [RoughJS](https://roughjs.com/) is a small-ish (\<9kB) JavaScript graphics library that lets you draw in a *sketchy, hand-drawn-like* style. It lets you draw on `<canvas>` and with `SVG`. This blog post is to address the most common issue filed with RoughJS: **How does it work?**
+[RoughJS](https://roughjs.com/) is a small-ish (\<9kB) JavaScript graphics library that lets you draw in a *sketchy, hand-drawn-like* style. It lets you draw on `<canvas>` and with `SVG`. This blog post is to address the most common issue filed with RoughJS: **How does it work?**
 
 <figure>
   <img alt="squares" loading="lazy" width="648" height="242" src="/stuff/posts/roughjs/rough1.png">
@@ -307,7 +307,7 @@ Following are the points generated with distance values of `0.15`, `0.75`, `1.5`
   <img alt="Bezier curve" loading="lazy" width="800" height="497" src="/stuff/posts/roughjs/bcurve3.png">
 </figure>
 
-Based on the *roughness* of the shape, once can set an appropriate value of distance. Once you have all the vertices of the polygon, curved shapes fill nicely:
+Based on the *roughness* of the shape, one can set an appropriate value of distance. Once you have all the vertices of the polygon, curved shapes fill nicely:
 
 <figure>
   <img alt="curves" loading="lazy" width="605" height="212" src="/stuff/posts/roughjs/curves.png">
