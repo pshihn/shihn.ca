@@ -14,7 +14,7 @@ pagination:
   }
   
   #postSection {
-    padding: 0 8px 16px;
+    padding: 0 28px 16px;
     max-width: 560px;
     margin: 0 auto 0 0;
   }
@@ -27,8 +27,9 @@ pagination:
 
   #creationSection {
     padding: 8px;
+    max-width: 560px;
+    margin: 30px auto 0 0;
     text-align: center;
-    margin-top: 30px;
   }
 
   a.inline-link, a.inline-link:hover, a.inline-link:visited {
@@ -58,8 +59,12 @@ pagination:
   @media(max-width: 900px) {
     #postSection {
       margin: 0 auto;
+      padding: 0 8px 16px;
     }
-
+    #creationSection {
+      max-width: initial;
+      margin: 30px 0 0 0;
+    }
     .titleSection {
       margin: 0 auto;
     }
@@ -104,7 +109,7 @@ pagination:
   </div>
 </section>
 
-<section class="titleSection">
+<section class="titleSection" style="text-align: center;">
   <p class="welcome-message">
     And sometimes I make things. Here are some recent creations 👇
   </p>
