@@ -119,7 +119,7 @@ pagination:
   <div class="creations-panel horizontal layout center wrap">
   {% for post in links | reverse %}
     {% if loop.index0 < 3 %}
-      <article class="creation-card" style="{{ post.themebg | transparentize }} --card-fg:{{ post.themefg }}; background-image: url({{ post.image }});">
+      <article class="creation-card" data-image="{{ post.image }}" style="{{ post.themebg | transparentize }} --card-fg:{{ post.themefg }}; background-image: url({{ post.image }});">
         <div class="creation-card-glass"></div>
         <a class="card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.title }}">
           <div class="card-title">{{ post.title }}</div>

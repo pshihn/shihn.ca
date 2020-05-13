@@ -1,12 +1,13 @@
 (() => {
+  const DEFAULT_IMAGE = '/stuff/home/lightning.png';
   const canvas = document.querySelector('#stippleCanvas');
   let canvasEnabled = false;
   let sc = null;
-  let currentImage = '/stuff/home/lightning.png';
+  let currentImage = DEFAULT_IMAGE;
 
   const drawImage = () => {
-    if (sc && currentImage) {
-      sc.drawImage(currentImage, true);
+    if (sc) {
+      sc.drawImage(currentImage || DEFAULT_IMAGE, true);
     }
   }
 
@@ -51,9 +52,18 @@
     passive: true
   });
 
-  document.querySelectorAll('#postSection .card-link').forEach((n) => {
+  document.querySelectorAll('[data-image]').forEach((n) => {
     n.addEventListener('mouseover', () => {
       const image = n.dataset.image;
+      if (image && image !== currentImage) {
+        currentImage = image;
+        drawImage();
+      }
+    });
+  });
+  document.querySelectorAll('header').forEach((n) => {
+    n.addEventListener('mouseover', () => {
+      const image = DEFAULT_IMAGE;
       if (image && image !== currentImage) {
         currentImage = image;
         drawImage();
