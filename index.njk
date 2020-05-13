@@ -15,8 +15,14 @@ pagination:
   
   #postSection {
     padding: 0 8px 16px;
+    max-width: 560px;
+    margin: 0 auto 0 0;
+  }
+
+  .titleSection {
+    padding: 0 8px;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0 auto 0 0;
   }
 
   #creationSection {
@@ -42,6 +48,23 @@ pagination:
     text-align: center;
   }
 
+  #stippleCanvas {
+    position: fixed;
+    right: 0;
+    top: 50px;
+    pointer-events: none;
+  }
+
+  @media(max-width: 900px) {
+    #postSection {
+      margin: 0 auto;
+    }
+
+    .titleSection {
+      margin: 0 auto;
+    }
+  }
+
   @media(max-width: 600px) {
     .welcome-message {
       margin-top: 0;
@@ -49,13 +72,17 @@ pagination:
   }
 </style>
 
-<section id="postSection">
+<canvas id="stippleCanvas"></canvas>
+
+<section class="titleSection">
   <p class="welcome-message">
     👋🏽 Hi, I'm Preet. I write code for a living, and for fun. I focus mostly on the fun parts on this website. Here are some of my recent blog posts 👇
   </p>
+</section>
 
+<section id="postSection">
   {% for post in posts %}
-  <a class="card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.data.title }}">
+  <a class="card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.data.title }}" data-image="{{ post.data.image }}">
     <article class="cardpost horizontal layout" style="{{ post.data.themebg | transparentize }} --card-fg:{{ post.data.themefg }};">
       <div class="card-image" style="background-image: url({{ post.data.image }});">
         <div class="card-gradient"></div>
@@ -77,13 +104,13 @@ pagination:
   </div>
 </section>
 
-<section id="creationSection">
-  <div style="max-width: 600px; margin: 0 auto; text-align: left;">
-    <p class="welcome-message">
-      And sometimes I make things. Here are some recent creations 👇
-    </p>
-  </div>
+<section class="titleSection">
+  <p class="welcome-message">
+    And sometimes I make things. Here are some recent creations 👇
+  </p>
+</section>
 
+<section id="creationSection">
   <div class="creations-panel horizontal layout center wrap">
   {% for post in links | reverse %}
     {% if loop.index0 < 3 %}
@@ -101,3 +128,6 @@ pagination:
     <a class="inline-link" href="/creations">view all creations</a>
   </div>
 </section>
+
+<script defer src="/stuff/home/stippling.js"></script>
+<script defer src="/stuff/home/home.js"></script>
