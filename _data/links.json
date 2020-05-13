@@ -31,6 +31,14 @@
     "url": "https://wiredjs.com/"
   },
   {
+    "title": "Legra",
+    "description": "Create graphics using Lego-like bricks",
+    "image": "/stuff/creations/legra/monalisa.jpg",
+    "themebg": "rgba(168,101,43,1)",
+    "themefg": "#ffffff",
+    "url": "https://legrajs.com/"
+  },
+  {
     "title": "Brickception",
     "description": "A nested Breakout game with popup windows!",
     "image": "/stuff/creations/brickception/logo.jpg",
@@ -45,13 +53,5 @@
     "themebg": "rgba(203,212,228,1)",
     "themefg": "#000000",
     "url": "https://roughjs.com/"
-  },
-  {
-    "title": "Legra",
-    "description": "Create graphics using Lego-like bricks",
-    "image": "/stuff/creations/legra/monalisa.jpg",
-    "themebg": "rgba(168,101,43,1)",
-    "themefg": "#ffffff",
-    "url": "https://legrajs.com/"
   }
 ]
