@@ -37,7 +37,7 @@
     }
     if (canvasEnabled && !sc) {
       const n = 10000;
-      sc = Stippling.canvas(canvas, '/stuff/home/worker.js', n);
+      sc = Stippling.canvas(canvas, '/stuff/home/worker.js', n, 500);
       await sc.start();
       drawImage();
     }
