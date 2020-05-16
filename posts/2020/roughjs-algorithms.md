@@ -1,7 +1,7 @@
 ---
 layout: post-layout.njk
 title: How to emulate hand-drawn shapes / Algorithms behind RoughJS
-description: A dive into graphics algorithms used in RoughJS
+description: A dive into graphics algorithms used in RoughJS.
 image: /stuff/posts/roughjs/theme.jpg
 imagefull: /stuff/posts/roughjs/social.png
 imageWidth: 1280
