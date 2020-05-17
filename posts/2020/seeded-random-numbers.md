@@ -24,9 +24,7 @@ tags: ['posts']
 }
 </style>
 
-Computers are really good at following instructions — processing algorithms to create predictable and crafted solutions. This is pretty much the opposite of *randomness*. 
-
-"But that's not true", you might say. I use `Math.random()` all the time in my javascript (or any other language) and it works great. The thing is, you can program a machine to generate numbers which may be considered *random*, but the machine is at the mercy of its programming. You cannot really call something truly random if it follows the same algorithm to generate the random numbers.
+Computers are inherently not good at randomness. The thing is, you can program a machine to generate numbers which may be considered random, but the machine is at the mercy of its programming. You cannot really call something truly random if it follows an algorithm to generate the random numbers.
 
 Truly random numbers can be generated but they usually rely on unpredictable physical processes which are not defined by man-made patterns, e.g. based on thermal noise or nuclear decay of a particle. [Random.org](https://www.random.org/), for example, generates true random numbers from atmospheric noise. These are used in casino games, and lotteries to make them unpredictable. 
 
