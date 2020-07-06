@@ -1,12 +1,12 @@
 ---
 layout: post-layout.njk
 title: 'Resizing Rotated Elements'
-description: Visual editors usually allow resizing and rotation of elements. Applyting both transforms can be a little tricky. Here's how to do it.
-image: /stuff/posts/taming-randomness/thumb.jpg
-imagefull: /stuff/posts/taming-randomness/social.png
+description: Visual editors usually allow resizing and rotation of elements. Applying both transforms can be a little tricky. Here's how to do it.
+image: /stuff/posts/resizing-rotated-elements/rot-theme.png
+imagefull: /stuff/posts/resizing-rotated-elements/social.png
 imageWidth: 1280
 imageHeight: 669
-themebg: 'rgba(127,202,220,1)'
+themebg: 'rgba(248,240,252,1)'
 themefg: '#000'
 date: 2020-07-06
 tags: ['posts']
