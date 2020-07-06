@@ -28,6 +28,7 @@ ol {
 }
 resize-canvas {
   touch-action: none;
+  user-select: none;
 }
 </style>
 
