@@ -26,6 +26,9 @@ ol {
 #articleBody figure img {
   margin: 16px auto;
 }
+resize-canvas {
+  touch-action: none;
+}
 </style>
 
 <script async src="/stuff/posts/resizing-rotated-elements/resize-canvas.js"></script>
