@@ -30,13 +30,13 @@ ol {
 
 <script async src="/stuff/posts/resizing-rotated-elements/resize-canvas.js"></script>
 
-If you have ever used a visual editor — a WYSIWYG designer or a Graphics editor, you'd expect to be able to resize and rotate the selected shape or element. These are common operations, and yet when applied together can cause a bit of an itchy head. I say that because I have been involved with a few projects over the years that required these features, and every time I have seen developers having some sort of trouble getting it just right. 
+If you have ever used a visual editor — a WYSIWYG designer or a Graphics editor, you'd expect to be able to resize and rotate the selected shape or element. These are common operations, and yet when applied together can cause a bit of an itchy head. 
 
 ## The Problem
 
-Let's take the most common use case - a rectangle (*Elements on a web page have a bounding rectangle, and vectors in graphics have a rectangular bounding box*). We usually represent the rectangle with four numbers - the `x, y` coordinates of the top left corner of the rectangle and the `width, height` of the rectangle. 
+Let's take the most common use case - a rectangle (*Elements on a web page have a bounding rectangle, and vectors in graphics have a rectangular bounding box*). We usually represent the rectangle with four numbers - the `x, y` coordinates of the top-left corner of the rectangle, and the `width, height` of the rectangle. 
 
-For resizing this rectangle, common practice is to add four draggable handles at the corners of the rectangle. You can also add four additional handles in the middle of each side to resize in only one direction. **For simplicity, I'm going to just add one handle** - handle to move the bottom right corner of the rectangle. The concept can be applied to all handles the same way. 
+For resizing this rectangle, common practice is to add four draggable handles at the corners of the rectangle. You can also add four additional handles in the middle of each side to resize in only one direction. **For simplicity, I'm going to just add one handle** - handle to move the bottom right corner of the rectangle.
 
 To resize, one calculates how much `x` and `y` units the user has dragged the handle. Let's call the change in the values to be `𝝙x` and `𝝙y`. The new width and height of the rectangle would be `width + 𝝙x` and `height + 𝝙y` respectively. 
 
@@ -48,9 +48,9 @@ In the interactive example above, there'a top handle which can be used to rotate
 
 You will notice a couple of issues:
 1) When you resize the rectangle, the shape tends to move. i.e. you are dragging the bottom-right corner, but somehow the top-left corner is also moving. 
-2) The second one may be a bit more subtle to notice. The distance you drag horizontally or vertically does not quite match with the change in size you perceive in the rotated shape. You have to take into account the angle of the rotation. 
+2) The second one may be a bit more subtle to notice. The distance you drag horizontally or vertically does not quite match with the change in size you perceive in the rotated shape.
 
-## What's Happening
+## What's Happening?
 
 The rectangle is rotated about its center. In the diagram below `A'` is the new location of the top-left corner `A`. 
 
@@ -75,9 +75,9 @@ This accounts for the first issue. The second issue is that we are changing the 
 
 Let's address the first issue. As we move the bottom-right corner we want to ensure that the top-left corner does not change. Which means, **when we resize a rotated rectangle, we should also update its position**. 
 
-Let's calculate the coordinates for `A'`. We can use a [rotation matrix](https://en.wikipedia.org/wiki/Rotation_matrix) to calculate the coordinates. We also have to consider that the rotation does not happen around the origin of the canvas, but around the center of the rectangle. 
+Let's calculate the coordinates for `A'`. We can use a [rotation matrix](https://en.wikipedia.org/wiki/Rotation_matrix) to do that. We also have to consider that the rotation does not happen around the origin of the canvas, but around the center of the rectangle. 
 
-Center of the rectangle `cx, cy` are simple to calculate:
+First let's establish the center of the rectangle `cx, cy`:
 ```javascript
 // For a rectangle with top-left at x, y
 const cx = rectangle.x + rectangle.width / 2;
@@ -95,7 +95,7 @@ function rotate(x, y, cx, cy, angle) {
 const rotatedA = rotate(rectangle.x, rectangle.y, cx, cy); // calculate A'
 ```
 
-Since we were dragging the bottom-right corner of the rectangle, we knew what the value of `C'` (`rotatedC` in the code) should be. Since we want `A` to remain the same, we can now calculate the new center by finding the midpoint between `A'` and `C'`. 
+As we were dragging the bottom-right corner of the rectangle, we knew what the value of `C'` (`rotatedC` in the code) should be. Since we want `A'` to remain the same, we can now calculate the new center by finding the midpoint between `A'` and `C'`. 
 
 ```javascript
 const newCenter = [
@@ -110,19 +110,19 @@ Now to calculate the new top-left  coordinates for the rectangle, we simply rota
 const newA = rotate(rotatedA[0], rotatedA[1], newCenter[0], newCenter[1], -angle);
 ```
 
-Adjusting the coordinates will ensure that the rotated rectangle will not visually shift when resized.
+Setting the `x, y` of the rectangle to `newA` will ensure that the rotated rectangle does not visually shift when resized.
 
 ## Adjusted Width And Height
 
 Now let's deal with the second issue - we need a projection of what the width and height should be when there is no rotation. The answer is to build on top of the first solution.
 
-We can calculate the unrotated coordinates of the bottom-right corner `C` by rotating the new coordinates of `C'` around the new center by the reverse angle `-angle`. 
+We can calculate the unrotated coordinates of the bottom-right corner `C` by rotating the new coordinates of `C'` around the new center by the reverse angle.
 
 ```javascript
 const newC = rotate(rotatedC[0], rotatedC[1], newCenter[0], newCenter[1], -angle);
 ```
 
-The width and height of the rectangle can be calculated by measuring the difference in `x` and `y` values between `newC` and `newA`. 
+The width and height of the rectangle can be calculated by measuring the difference in `x` and `y` values of `newC` and `newA`. 
 
 ```javascript
 const newWidth = newC[0] - newA[0];
