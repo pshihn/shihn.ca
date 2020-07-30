@@ -53,5 +53,13 @@
     "themebg": "rgba(203,212,228,1)",
     "themefg": "#000000",
     "url": "https://roughjs.com/"
+  },
+  {
+    "title": "RoughNotation",
+    "description": "Create and animate hand-drawn annotations on a web page",
+    "image": "/stuff/creations/roughnotation/roughnotation.png",
+    "themebg": "rgba(250,234,96,1)",
+    "themefg": "#000000",
+    "url": "https://roughnotation.com/"
   }
 ]
