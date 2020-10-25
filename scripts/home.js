@@ -85,7 +85,7 @@ const onRadioChange = () => {
   renderCanvas();
 };
 
-
+rNormal.checked = true;
 radioPanel.addEventListener('change', onRadioChange);
 slider.addEventListener('input', () => {
   renderCanvas();
