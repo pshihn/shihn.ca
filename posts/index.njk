@@ -1,0 +1,190 @@
+---
+layout: base-layout.njk
+pagination:
+  data: collections.posts
+  size: 500
+  reverse: true
+  alias: posts
+---
+
+{% set css %}
+body {
+  --darkest: #251433;
+}
+header {
+  background: var(--darkest);
+  color: #FFFFFF;
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 200;
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
+#headerMessage {
+  max-width: 50%;
+  margin: 0 auto;
+  padding: 1rem 0 4rem;
+}
+.datePanel {
+  flex: 0 0 25%;
+  max-width: 25%;
+  padding: 28px 14px 0 0;
+  font-size: 0.8em;
+}
+.textPanel {
+  padding: 28px 14px 28px 0px;
+}
+.imagePanel {
+  flex: 0 0 25%;
+  max-width: 25%;
+  position: relative;
+}
+.imagePanel img {
+  object-fit: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 28px 0;
+  transition: transform 0.28s ease;
+}
+main {
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 300;
+  max-width: 1470px;
+  width: 93.3333333333%;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+.titleLinkPanel {
+  max-width: 580px;
+}
+.titleLink {
+  margin: 0;
+  font-weight: 300;
+  font-size: 1.75rem;
+}
+section {
+  border-bottom: 1px solid #e5e5e5;
+}
+main a, main  a:hover, main a:visited {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+  border: none;
+}
+h1 {
+  max-width: 50%;
+  margin: 0 auto;
+  font-weight: 300;
+  font-size: 3rem;
+  line-height: 1.35;
+  letter-spacing: 1px;
+}
+.descLink {
+  display: inline-block;
+}
+
+@media(hover:hover) {
+  main a:hover {
+    color: rgba(0,0,100,0.5);
+  }
+  .imagePanel img:hover {
+    transform: scale(1.1);
+  }
+}
+
+@media(max-width: 1100px) {
+  #headerMessage {
+    max-width: 80%;
+  }
+  h1 {
+    max-width: 80%;
+  }
+}
+@media(max-width: 780px) {
+  #headerMessage {
+    max-width: 100%;
+  }
+  h1 {
+    max-width: 100%;
+  }
+  .datePanel {
+    display: none;
+  }
+}
+@media(max-width: 580px) {
+  header {
+    font-size: 1em;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  .titleLink {
+    font-size: 1.4em;
+  }
+  .textPanel {
+    font-size: 1rem;
+    padding: 18px 0 28px;
+  }
+  section.horizontal {
+    flex-direction: column-reverse;
+  }
+  .imagePanel {
+    flex: initial;
+    max-width: initial;
+    padding: 28px 0 0;
+  }
+  .imagePanel img {
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    padding: 0;
+  }
+}
+{% endset %}
+<style>
+{{ css | cssmin | safe }}
+</style>
+
+<header>
+  {% include "nav-layout.njk" %}
+  <div style="width: 93.3333333333%; max-width: 1470px; margin: 0 auto;">
+    <h1>Things I wrote</h1>
+    <div id="headerMessage">
+    I don't write as much as I'd like to. Sometimes I add mini interactive components as explainers. Here are some of 'em 👇
+    </div>
+  </div>
+</header>
+
+<main>
+{% for post in posts %}
+<section class="horizontal" >
+  <div class="datePanel">
+    <time datetime="{{ post.data.date | dateIso }}">{{ post.data.date | dateReadable }}</time> 
+    {% set wc = post.templateContent | striptags | wordcount %}
+    {% set wPerMinute = wc / 240 %}
+    <div>
+      {{ wPerMinute | round }} min read
+    </div>
+  </div>
+  <div class="textPanel flex">
+    <div class="titleLinkPanel">
+      <a class="titleLink" href="{{ post.url | url }}">{{ post.data.title }}</a>
+    </div>
+    <p>
+      <a class="descLink" href="{{ post.url | url }}">{{ post.data.description }}</a>
+    </p>
+  </div>
+  <div class="imagePanel">
+    <a href="{{ post.url | url }}">
+      <img loading="lazy" width="{{post.data.headerImageWidth}}" height="{{post.data.headerImageHeight}}" src="{{ post.data.headerImage }}" alt="{{post.data.title}}">
+    </a>
+  </div>
+</section>
+{% endfor %}
+</main>
+
+{% include "footer-layout.njk" %}

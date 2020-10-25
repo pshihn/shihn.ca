@@ -1,0 +1,16 @@
+{% set css %}
+  {% include "nav.css" %}
+{% endset %}
+<style>
+  {{ css | cssmin | safe }}
+</style>
+
+<nav class="horizontal center">
+  <a href="/" id="siteName"><span>shihn.ca</span> ⚡️</a>
+  <div id="navSpacer" class="flex"></div>
+  <ul class="horizontal center spaced">
+    <li><a class="{% if page.url == '/posts/' %} selected{% endif %}" href="/posts/">Writings</a></li>
+    <li><a class="{% if page.url == '/creations/' %} selected{% endif %}" href="/creations/">Creations</a></li>
+    <li><a class="{% if page.url == '/about/' %} selected{% endif %}" href="/about/">About</a></li>
+  </ul>
+</nav>

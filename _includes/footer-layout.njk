@@ -1,0 +1,28 @@
+{% set css %}
+  {% include "footer.css" %}
+{% endset %}
+<style>
+  {{ css | cssmin | safe }}
+</style>
+
+<footer>
+  <div id="footerInner" class="horizontal center">
+    <div class="horizontal">
+      <a href="/" aria-label="Home"><img class="userImage" alt="Preet shihn" src="/stuff/photo.jpg"></a>
+      <div>
+        <div><a id="footerName" href="/">shihn.ca ⚡️</a></div>
+        <ul class="horizontal center">
+          <li><a class="{% if page.url == '/posts/' %} selected{% endif %}" href="/posts/">Writings</a></li>
+          <li><a class="{% if page.url == '/creations/' %} selected{% endif %}" href="/creations/">Creations</a></li>
+          <li><a class="{% if page.url == '/about/' %} selected{% endif %}" href="/about/">About</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex"></div>
+    <div class="horizontal center social">
+      <a href="https://twitter.com/preetster" aria-label="Twitter">{% include "twitter-icon.njk" %}</a>
+      <a href="https://github.com/pshihn" aria-label="Github">{% include "github-icon.njk" %}</a>
+      <a href="/feed.xml" title="RSS">{% include "rss-icon.njk" %}</a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% include "metadata.njk" %}
+
+  {% set css %}
+    * {box-sizing: border-box;}
+    [hidden] {display: none !important;}
+    .horizontal {display: flex; flex-direction: row;}
+    .vertical {display: flex; flex-direction: column;}
+    .center {align-items: center;}
+    .center-center {justify-content: center; align-items: center;}
+    .spaced {justify-content: space-between;}
+    .flex {flex: 1;}
+    .wrap {flex-wrap: wrap;}
+    
+    body {
+      margin: 0;
+      font-weight: 400;
+      line-height: 1.5;
+      font-size: 20px;
+      -webkit-font-smoothing: subpixel-antialiased;
+      color: #242424;
+      overflow-x: hidden;
+      --darkest: #33112D;
+    }
+    @media(max-width: 960px) {
+      body {
+        font-size: 18px;
+      }
+    }
+  {% endset %}
+  <style>
+    {{ css | cssmin | safe }}
+  </style>
+</head>
+
+<body>
+  {{ content | safe }}
+  
+  <script>
+    window.ga = window.ga || ((...args) => (ga.q = ga.q || []).push(args));
+    ga("create", "UA-134693493-3", "auto");
+    ga("set", "transport", "beacon");
+    ga("send", "pageview");
+    const s = document.createElement("script");
+    s.defer = true;
+    s.src = "https://www.google-analytics.com/analytics.js";
+    document.head.appendChild(s);
+  </script>
+</body>
+
+</html>

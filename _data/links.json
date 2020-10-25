@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Windtalk",
+    "description": "The easiest way to work with iframes and multiple windows. Windtalk exports a function or an object from within an iFrame or Window. This can now be invoked from any other window.",
+    "image": "/stuff/creations/windtalk/small.jpg",
+    "url": "https://github.com/pshihn/windtalk"
+  },
+  {
+    "title": "Math-ML",
+    "description": "MathML has been part of part of the HTML5 spec for some time now, but many browsers don't support it (Chrome, for example). This is a simple attempt to use basic javascript, CSS and some SVG to implement MathML compatible notation that works across all browsers.",
+    "image": "/stuff/creations/mathml/emc2.jpg",
+    "url": "https://github.com/pshihn/math-ml"
+  },
+  {
+    "title": "Wired Elements",
+    "description": "A set of common UI elements with a hand-drawn, sketchy look. These can be used for wireframes, mockups, or just the fun hand-drawn look.",
+    "image": "/stuff/creations/wired/logo.jpg",
+    "url": "https://wiredjs.com/"
+  },
+  {
+    "title": "Legra",
+    "description": "Legra (Lego brick Graphics) is a small JavaScript library that lets you draw using LEGO® like brick shapes on an HTML <canvas> element. ",
+    "image": "/stuff/creations/legra/monalisa.jpg",
+    "url": "https://legrajs.com/"
+  },
+  {
+    "title": "Brickception",
+    "description": "Brickception is a fun take on the classic breakout game with popup windows!",
+    "image": "/stuff/creations/brickception/logo.jpg",
+    "url": "https://brickception.xyz/"
+  },
+  {
+    "title": "RoughJS",
+    "description": "A graphics library that lets you draw in a sketchy, hand-drawn-like, style. The library defines primitives to draw lines, curves, arcs, polygons, circles, and ellipses. It also supports drawing SVG paths.",
+    "image": "/stuff/creations/roughjs/rough.jpg",
+    "url": "https://roughjs.com/"
+  },
+  {
+    "title": "RoughNotation",
+    "description": "Create and animate hand-drawn annotations on a web page. Elements can be annotated in a number of different styles. Animation duration and delay can be configured, or just turned off.",
+    "image": "/stuff/creations/roughnotation/roughnotation.png",
+    "url": "https://roughnotation.com/"
+  }
+]
