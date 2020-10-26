@@ -1,11 +1,17 @@
 const { DateTime } = require("luxon");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const syntaxHighlightPlugin = require("@11ty/eleventy-plugin-syntaxhighlight");
+const CleanCSS = require("clean-css");
 
 module.exports = function (eleventyConfig) {
   // syntax highlighting plugin
   eleventyConfig.addPlugin(syntaxHighlightPlugin, {
     templateFormats: 'md'
+  });
+
+  // CSS
+  eleventyConfig.addFilter("cssmin", function (code) {
+    return new CleanCSS({}).minify(code).styles;
   });
 
   // RSS plugin
@@ -18,12 +24,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('dateReadable', date => {
     return DateTime.fromJSDate(date, { zone: 'utc' }).toFormat("LLL d, yyyy");
   });
-  eleventyConfig.addFilter('transparentize', color => {
-    const tp = color.replace(',1)', ',0)');
-    return `--card-bg:${color}; --card-bg-t:${tp};`;
-  });
 
   // Folders to copy to output folder
   eleventyConfig.addPassthroughCopy('stuff');
-  eleventyConfig.addPassthroughCopy('css');
+  eleventyConfig.addPassthroughCopy('scripts');
 };

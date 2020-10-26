@@ -1,0 +1,102 @@
+---
+layout: base-layout.njk
+---
+
+<style>
+body {--darkest: #263238;}
+header {
+  background: var(--darkest);
+  color: #FFFFFF;
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 200;
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
+main {
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1em 16px;
+}
+h1 {
+  margin: 0;
+  font-weight: 300;
+  font-size: 2rem;
+  line-height: 1.35;
+  letter-spacing: 1px;
+  padding: 0 16px 2em;
+  text-align: center;
+}
+main a, main  a:hover, main a:visited {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.45);
+}
+main img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+@media(hover:hover) {
+  main  a:hover {
+    color: rgba(0,0,0,0.45);
+  }
+}
+</style>
+
+
+<header>
+  {% include "nav-layout.njk" %}
+  <h1>👋🏽 Hi, I'm Preet</h1>
+</header>
+
+<main>
+<p>
+  I'm an engineer from 🇨🇦, living in San Francisco with my wife (and baby on his way). I am on <a target="_blank" rel="noopener" href="https://twitter.com/preetster">Twitter</a> - say Hi! 
+</p>
+<p>
+<img src="/stuff/about.jpg" alt="Photo of Preet">
+</p>
+<p>
+I studied Computer Engineering and Physics at school, and started coding on real-time control systems. After moving to California,
+I spent six years working at <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Fanfare_(company)">Fanfare</a> 
+on enterprise software, where among other things, I designed UI automation engines for various native and web platforms, and a custom embedded browser. 
+In recent years, I have worked on various startup projects and got sucked into writing code for the web, which I realized I kinda enjoy.</p>
+
+<p>
+I read a lot and am always working on multiple fun side-projects at the same time, which has caused me much anguish and joy. My current technical interests are: 
+</p>
+<p>
+🌐 The Open Web<br>
+🎇 Graphics<br>
+🧠 Decision Engines<br>
+👀 Engaging Storytelling<br>
+〽️ Alternative UI paradigms<br>
+</p>
+<p>
+I'm also interested in 
+</p>
+<p>
+📸 Polaroids (have an obscene collection of them)<br>
+🎾 Tennis<br>
+📚 History<br>
+</p>
+
+<p>
+I built this site hoping to nudge myself to write more. I don't think it has quite worked yet. 
+This site was built using
+<a target="_blank" rel="noopener" href="https://www.11ty.io/">Eleventy</a>
+ and the code for this site can be found on 
+ <a target="_blank" rel="noopener" href="https://github.com/pshihn/shihn.ca">Github</a>.
+</p>
+</main>
+
+{% include "footer-layout.njk" %}

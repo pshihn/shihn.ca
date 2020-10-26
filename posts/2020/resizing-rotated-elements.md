@@ -1,38 +1,32 @@
 ---
 layout: post-layout.njk
 title: 'Resizing Rotated Elements'
-description: Visual editors usually allow resizing and rotation of elements. Applying both transforms can be a little tricky. Here's how to do it.
-image: /stuff/posts/resizing-rotated-elements/rot-theme.png
-imagefull: /stuff/posts/resizing-rotated-elements/social.png
+description: Visual editors usually allow resizing and rotation of elements. Applying both transforms can be a little tricky. This post explores an algorithm to implement this feature.
+headerBackground: '#e6e3df'
+headerColor: '#000000'
+headerImage: /stuff/posts/resizing-rotated-elements/rot2.png
+headerImageWidth: 607
+headerImageHeight: 412
+socialImage: /stuff/posts/resizing-rotated-elements/social.png
 imageWidth: 1280
 imageHeight: 669
-themebg: 'rgba(248,240,252,1)'
-themefg: '#000'
 date: 2020-07-06
 tags: ['posts']
 ---
 
 <style>
-ol {
-  max-width: 680px;
-  margin: 0px auto 28px;
-}
-#articleBody img {
-  display: block;
-  box-sizing: border-box;
-  max-width: 100%;
-  height: auto;
-}
-#articleBody figure img {
-  margin: 16px auto;
-}
 resize-canvas {
   touch-action: none;
   user-select: none;
 }
+#headerImageCell img {
+  box-shadow: none;
+}
 </style>
 
 <script async src="/stuff/posts/resizing-rotated-elements/resize-canvas.js"></script>
+
+## Introduction
 
 If you have ever used a visual editor — a WYSIWYG designer or a Graphics editor, you'd expect to be able to resize and rotate the selected shape or element. These are common operations, and yet when applied together can cause a bit of an itchy head. 
 

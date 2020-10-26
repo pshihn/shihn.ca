@@ -1,28 +1,20 @@
 ---
 layout: post-layout.njk
 title: 'Autoplaying back-to-back videos on the web using a Media Pool'
-description: 'When autoplaying a queue of videos, a media-pool can be used to overcome browser restrictions'
-image: /stuff/posts/media-pool/theme.jpg
-imagefull: /stuff/posts/media-pool/social.png
+description: 'When autoplaying a queue of videos, a media-pool can be used to overcome browser restrictions related to auto-muting. Reusing video elements is also more performant, especially on mobile devices.'
+headerBackground: '#091724'
+headerColor: '#FFFFFF'
+headerImage: /stuff/posts/media-pool/cover.png
+headerImageWidth: 463
+headerImageHeight: 353
+socialImage: /stuff/posts/media-pool/social.png
 imageWidth: 1280
 imageHeight: 669
-themebg: 'rgba(21,53,73,1)'
-themefg: '#ffffff'
 date: 2020-07-30
 tags: ['posts']
 ---
 
-<style>
-#articleBody img {
-  display: block;
-  box-sizing: border-box;
-  max-width: 100%;
-  height: auto;
-}
-#articleBody figure img {
-  margin: 16px auto;
-}
-</style>
+## Introduction
 
 No one likes it when you go to a web page and it automatically starts playing a video loudly. Browsers have changed their auto-play policies to let JavaScript auto-play a video only if it's inline and muted. (See posts for [Safari](https://webkit.org/blog/6784/new-video-policies-for-ios/) and [Chrome](https://developers.google.com/web/updates/2017/09/autoplay-policy-changes)).
 

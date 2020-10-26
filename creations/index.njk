@@ -1,49 +1,173 @@
 ---
-layout: content-base-layout.njk
+layout: base-layout.njk
 pagination:
   data: links
   size: 500
   reverse: true
   alias: links
 ---
-<style>
-main {
-  padding: 32px 8px 48px;
-  max-width: 100%;
+
+{% set css %}
+body {
+  --darkest: #0F331D;
+}
+header {
+  background: var(--darkest);
+  color: #FFFFFF;
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 200;
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
+#headerMessage {
+  max-width: 50%;
   margin: 0 auto;
-  background: none;
-  color: white;
-  box-sizing: border-box;
-  box-shadow: none;
-  text-align: center;
-  max-width: 1130px;
+  padding: 1rem 0 4rem;
 }
-.welcome-message {
-  max-width: 600px;
-  margin: 1em auto 24px;
-  text-align: left;
-  padding: 0 10px;
+.datePanel {
+  flex: 0 0 25%;
+  max-width: 25%;
+  padding: 28px 24px 0 0;
 }
-@media(max-width: 600px) {
-  main {
-    padding: 16px 8px 32px;
+.textPanel {
+  padding: 28px 14px 28px 0px;
+}
+main {
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 300;
+  max-width: 1470px;
+  width: 93.3333333333%;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+.titleLinkPanel {
+  max-width: 580px;
+}
+.titleLink {
+  margin: 0;
+  font-weight: 300;
+  font-size: 1.75rem;
+}
+main a, main  a:hover, main a:visited {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+  border: none;
+}
+h1 {
+  max-width: 50%;
+  margin: 0 auto;
+  font-weight: 300;
+  font-size: 3rem;
+  line-height: 1.35;
+  letter-spacing: 1px;
+}
+.descLink {
+  display: inline-block;
+}
+.imagePanel {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  background-size: cover;
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+.goIcon {
+  width: 56px;
+  height: 56px;
+  border: 2px solid;
+  border-radius: 50%;
+  padding: 8px;
+}
+main path {
+  fill: var(--darkest);
+}
+
+@media(hover:hover) {
+  main a:hover {
+    color: rgba(0,0,100,0.5);
   }
 }
+
+@media(max-width: 1100px) {
+  #headerMessage {
+    max-width: 80%;
+  }
+  h1 {
+    max-width: 80%;
+  }
+}
+@media(max-width: 780px) {
+  #headerMessage {
+    max-width: 100%;
+  }
+  h1 {
+    max-width: 100%;
+  }
+}
+@media(max-width: 580px) {
+  header {
+    font-size: 1em;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  .titleLink {
+    font-size: 1.4em;
+  }
+  .textPanel {
+    font-size: 1rem;
+    padding: 28px 16px 28px 0;
+  }
+  .datePanel {
+    padding: 28px 10px 0 0;
+    margin-left: -2vw;
+    display: none;
+  }
+}
+{% endset %}
+<style>
+{{ css | cssmin | safe }}
 </style>
 
-<p class="welcome-message">
-  I often tinker around in my spare time to make something whimsical, and sometimes useful. 
-  Here you will find links to some of these creations 👇
-</p>
+<header>
+  {% include "nav-layout.njk" %}
+  <div style="width: 93.3333333333%; max-width: 1470px; margin: 0 auto;">
+    <h1>Stuff I made</h1>
+    <div id="headerMessage">
+    I often tinker around in my spare time to make something whimsical, and sometimes useful. Here you will find links to some of these creations 👇
+    </div>
+  </div>
+</header>
 
-<div class="creations-panel horizontal layout center wrap">
+<main>
 {% for post in links %}
-  <article class="creation-card" style="{{ post.themebg | transparentize }} --card-fg:{{ post.themefg }}; background-image: url({{ post.image }});">
-    <div class="creation-card-glass"></div>
-    <a class="card-link" href="{{ post.url | url }}" aria-label="Read more about {{ post.title }}">
-      <div class="card-title">{{ post.title }}</div>
-      <div class="card-description">{{ post.description }}</div>
+<section class="horizontal" >
+  <div class="datePanel horizontal">
+    <span class="flex"></span>
+    <a target="_blank" rel="noopener" class="imagePanel" href="{{ post.url | url }}" alt="{{ post.title }}" style="background-image: url('{{post.image}}')"></a>
+  </div>
+  <div class="textPanel flex">
+    <div class="titleLinkPanel">
+      <a target="_blank" rel="noopener" class="titleLink" href="{{ post.url | url }}">{{ post.title }}</a>
+    </div>
+    <p style="max-width: 740px;">
+      {{ post.description }}
+    </p>
+  </div>
+  <div style="align-self: center;">
+    <a target="_blank" rel="noopener" class="titleLink" href="{{ post.url | url }}" aria-label="{{post.title}}">
+      <div class="goIcon">
+        <svg viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet" focusable="false" style="pointer-events: none; display: block; width: 100%; height: 100%;"><g><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path></g></svg>
+      </div>
     </a>
-  </article>
+  </div>
+</section>
 {% endfor %}
-</div>
+</main>
+
+{% include "footer-layout.njk" %}

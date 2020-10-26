@@ -1,18 +1,48 @@
 ---
-layout: content-base-layout.njk
+layout: base-layout.njk
 ---
-<link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}">
+
+{% set css %}
+  {% include "prism-vs.css" %}
+  {% include "post.css" %}
+{% endset %}
+<style>
+  {{ css | cssmin | safe }}
+</style>
+
 <article>
-  <h1>{{ title }}</h1>
-  <div id="timePanel">
-    <time datetime="{{ date | dateIso }}">{{ date | dateReadable }}</time> 
-  </div>
-  <div id="articleBody">
-  {{ content | safe }}
-  </div>
+  <header class="vertical">
+    {% include "nav-layout.njk" %}
+
+    <div id="headerContent" class="flex">
+      <div id="headerImageCell">
+        <img loading="lazy" decoding="async" width="{{headerImageWidth}}" height="{{headerImageHeight}}" src="{{ headerImage }}" alt="{{title}}">
+      </div>
+      <div id="headerTextCell" class="flex vertical">
+        <div class="flex" style="max-width: 700px;">
+          <h1>{{ title }}</h1>
+          <p>{{ description }}</p>
+        </div>
+        <div id="byline">
+          <time datetime="{{ date | dateIso }}">{{ date | dateReadable }}</time> 
+          {% set wc = content | striptags | wordcount %}
+          {% set wPerMinute = wc / 240 %}
+          <div>
+            {{ wPerMinute | round }} minute read
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <main>
+    <section class="content">
+      {{ content | safe }}
+    </section>
+    <table-of-contents></table-of-contents>
+  </main>
+  
+  {% include "footer-layout.njk" %}
 </article>
 
-<script async src="https://popreactions.appspot.com/dist/embed-app.min.js"></script>
-<div class="popReactionPanel" style="padding: 16px 0;">
-  <pop-reaction type="spark" site="1KCRA1PO8W0"></pop-reaction>
-</div>
+<script async defer src="/scripts/post.min.js"></script>

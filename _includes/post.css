@@ -1,0 +1,186 @@
+code {
+  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+  line-height: 1.5;
+  font-size: 14px;
+  background: #faf0f0;
+  padding: 2px 5px;
+}
+code[class*="language-"] {
+  background: initial;
+  padding: initial;
+}
+header {
+  background: {{ headerBackground }};
+  color: {{ headerColor }};
+  min-height: 40vh;
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 200;
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
+#headerContent {
+  max-width: 1470px;
+  width: 93.3333333333%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 28px 0;
+}
+#headerTextCell {
+  padding: 0 14px 0 0;
+}
+#headerImageCell {
+  flex: 0 0 33.3333333333%;
+  max-width: 33.3333333333%;
+  padding: 0 0 0 14px;
+  position: relative;
+}
+#headerImageCell img {
+  display: block;
+  box-shadow: 0 0 25px rgba(5,5,5,0.15);
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+h1 {
+  margin: 0;
+  font-weight: 300;
+  font-size: 3rem;
+  line-height: 1.35;
+  letter-spacing: 1px;
+}
+#byline {
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0.7;
+}
+main {
+  max-width: 1470px;
+  width: 93.3333333333%;
+  margin: 0 auto;
+  position: relative;
+}
+section.content {
+  max-width: 50%;
+  margin-left: 25%;
+  padding: 0 14px;
+}
+h2 {
+  line-height: 1.35;
+  letter-spacing: 1px;
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif;
+  margin-top: 2.1rem;
+  margin-bottom: .7rem;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #000;
+}
+h3 {
+  line-height: 1.35;
+  letter-spacing: 1px;
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif;
+  margin-top: 1rem;
+  margin-bottom: .7rem;
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: #000;
+}
+figure {
+  margin: 2.5rem 0;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  font-weight: 300;
+  width: 96vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-48vw);
+  z-index: 1;
+  pointer-events: none;
+}
+figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  background: rgba(255,255,255, 0.95);
+}
+.content a, .content a:hover, .content a:visited {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+  border-bottom: 1px solid rgba(0,0,100,0.5);
+}
+.content a:hover {
+  color: rgba(0,0,100,0.5);
+}
+
+table-of-contents {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media(max-width: 1280px) {
+  section.content {
+    max-width: 66.666667%;
+    margin-left: 0;
+    padding: 0 14px 0 0;
+  }
+  figure {
+    left: 0;
+    transform: translateX(-3.3333333333vw);
+  }
+  figure img {
+    margin: 0 3vw 0 0;
+  }
+  table-of-contents {
+    left: initial;
+    right: 0;
+  }
+}
+
+@media(max-width: 960px) {
+  section.content {
+    max-width: 75%;
+  }
+  figure img {
+    margin: 0 2vw 0 0;
+  }
+  header {
+    font-size: 20px;
+  }
+  h2 {
+    font-size: 1.7rem;
+  }
+  h1 {
+    font-size: 2.5rem;
+  }
+  table-of-contents {
+    display: none;
+  }
+}
+
+@media(max-width: 720px) {
+  section.content {
+    max-width: 100%;
+    padding: 0;
+  }
+  h1 {
+    font-size: 2.1rem;
+  }
+  #headerContent {
+    flex-direction: column;
+    padding-top: 0;
+  }
+  #headerTextCell {
+    padding: 0;
+  }
+  #headerImageCell {
+    padding: 0 0 24px 0;
+    align-self: center;
+    flex: 0 0 65%;
+    max-width: 65%;
+  }
+}

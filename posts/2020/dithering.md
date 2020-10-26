@@ -2,12 +2,14 @@
 layout: post-layout.njk
 title: Reducing Colors In An Image ⇢ Dithering
 description: Explore how dithering can help adopt different color palettes, while maintaining the essence of the image.
-image: /stuff/posts/dithering/monalisa-bw.png
-imagefull: /stuff/posts/dithering/cover.png
+headerBackground: '#0F331D'
+headerColor: '#ffffff'
+headerImage: /stuff/posts/dithering/monalisacover.jpg
+headerImageWidth: 500
+headerImageHeight: 505
+socialImage: /stuff/posts/dithering/cover.png
 imageWidth: 1280
 imageHeight: 669
-themebg: 'rgba(66,66,66,1)'
-themefg: '#fff'
 date: 2020-02-14
 tags: ['posts']
 ---
@@ -20,10 +22,6 @@ dither-view {
 .float-image {
   float: right;
 }
-#articleBody figure img {
-  height: auto;
-}
-
 @media(max-width: 600px) {
   .float-image {
     float: none;
@@ -35,6 +33,8 @@ dither-view {
 
 <dither-view src="/stuff/posts/dithering/monalisa.jpg" worker="/stuff/posts/dithering/dither-worker.js"></dither-view>
 <script async src="/stuff/posts/dithering/dither.js"></script>
+
+## Introduction
 
 An image can be rendered on a computer screen using millions of colors. In a traditional bitmap, every pixel is represented by a `RGB` value — the `red`, `green`, and `blue` channels. The value of each color can vary between `0-255`. This means there are over 16 million `(256 * 256 * 256 = 16,777,216)` possible colors!
 

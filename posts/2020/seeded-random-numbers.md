@@ -1,28 +1,20 @@
 ---
 layout: post-layout.njk
 title: 'Need for Seed: Taming Randomness in a Pseudorandom World'
-description: When to used a seeded pseudorandom number generator, and things to consider you do.
-image: /stuff/posts/taming-randomness/thumb.jpg
-imagefull: /stuff/posts/taming-randomness/social.png
+description: When to used a seeded pseudorandom number generator, and things to consider when you do.
+headerBackground: '#E0A4B7'
+headerColor: '#000000'
+headerImage: /stuff/posts/taming-randomness/cover.jpg
+headerImageWidth: 456
+headerImageHeight: 481
+socialImage: /stuff/posts/taming-randomness/social.png
 imageWidth: 1280
 imageHeight: 669
-themebg: 'rgba(127,202,220,1)'
-themefg: '#000'
 date: 2020-05-18
 tags: ['posts']
 ---
 
-<style>
-#articleBody img {
-  display: block;
-  box-sizing: border-box;
-  max-width: 100%;
-  height: auto;
-}
-#articleBody figure img {
-  margin: 16px auto;
-}
-</style>
+## Introduction
 
 Computers are inherently not good at randomness. The thing is, you can program a machine to generate numbers which may be considered random, but the machine is at the mercy of its programming. You cannot really call something truly random if it follows an algorithm to generate the random numbers.
 

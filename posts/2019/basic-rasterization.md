@@ -2,22 +2,20 @@
 layout: post-layout.njk
 title: Basic rasterization / Draw with emojis
 description: Discovering basic algorithms to render lines, shapes, curves, and filling them.
-image: /stuff/posts/rasterization/cover.png
-imagefull: /stuff/posts/rasterization/cover.png
+headerBackground: '#475D6B'
+headerColor: '#ffffff'
+headerImage: /stuff/posts/rasterization/cover.png
+headerImageWidth: 675
+headerImageHeight: 387
+socialImage: /stuff/posts/rasterization/cover.png
 imageWidth: 675
 imageHeight: 387
-themebg: 'rgba(231,231,231,1)'
-themefg: '#000000'
 date: 2019-12-19
 tags: ['posts']
 ---
 
 <style>
-main {
-  background: white;
-}
 collapsible-panel {
-  max-width: 680px;
   margin: 0 auto;
   font-family: monospace;
   font-size: 14px;
@@ -37,6 +35,8 @@ collapsible-panel pre {
 }
 </style>
 <script async src="/stuff/posts/rasterization/rasterization.js"></script>
+
+## Introduction
 
 An image is represented on a digital screen using pixels. A pixel is the smallest addressable unit of a digital screen, which means, when controlling a screen, we cannot control anything visually smaller than a pixel. Most screens are composed of a 2-dimensional array of pixels.
 
@@ -317,7 +317,3 @@ function bezierCurve(a, p1, b) {
 This post is, essentially, me aggregating some notes and thoughts I compiled when writing [Legra](https://legrajs.com/). Note that I did not actually compile together a final library that does draw everything using emojis, though all the interactive demos in this post do have an **emoji mode** switch on top. I'm hoping there are enough tools in this post to let one create such a library. 
 
 The interactive demos here are inspired from Amit Patel's [Red Blob Games](https://www.redblobgames.com/) blog. 
-
-Ciao!
-
-p.s. Slide the emoji bar below to indicate how much joy this post brought you

@@ -1,27 +1,36 @@
 {
   "name": "shihn.ca",
-  "version": "0.1.0",
-  "description": "shihn.ca website",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
+  "private": true,
   "scripts": {
+    "build-scripts": "rollup -c",
     "build": "npx eleventy",
-    "serve": "npx eleventy --serve",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "npx eleventy --serve"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pshihn/shihn.ca.git"
   },
-  "author": "Preet Shihn",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/pshihn/shihn.ca/issues"
   },
-  "homepage": "https://github.com/pshihn/shihn.ca#readme",
+  "homepage": "https://shihn.ca",
   "devDependencies": {
-    "@11ty/eleventy": "^0.10.0",
+    "@11ty/eleventy": "^0.11.1",
     "@11ty/eleventy-plugin-rss": "^1.0.9",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
-    "luxon": "^1.24.1"
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.4",
+    "clean-css": "^4.2.3",
+    "luxon": "^1.25.0",
+    "rollup": "^2.32.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^7.0.2"
+  },
+  "dependencies": {
+    "legra": "^0.3.0",
+    "stippled-image": "^0.1.0"
   }
 }

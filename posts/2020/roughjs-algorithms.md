@@ -1,33 +1,29 @@
 ---
 layout: post-layout.njk
 title: How to emulate hand-drawn shapes / Algorithms behind RoughJS
-description: A dive into graphics algorithms used in RoughJS.
-image: /stuff/posts/roughjs/theme.jpg
-imagefull: /stuff/posts/roughjs/social.png
+description: A dive into graphics algorithms used in RoughJS - A graphics library that lets you draw in a sketchy, hand-drawn-like, style.
+headerBackground: '#D1E0ED'
+headerColor: '#000000'
+headerImage: /stuff/posts/roughjs/cover.png
+headerImageWidth: 480
+headerImageHeight: 480
+socialImage: /stuff/posts/roughjs/social.png
 imageWidth: 1280
 imageHeight: 669
-themebg: 'rgba(255,255,245,1)'
-themefg: '#000'
 date: 2020-04-29
 tags: ['posts']
 ---
 
 <style>
-main {
-  background: white;
-}
-#articleBody figure img {
-  height: auto;
-}
 rough-draw {
   margin: 16px auto;
 }
 .interactive-caption {
   font-family: monospace;
   color: #777;
+  font-size: 0.85em;
 }
 collapsible-panel {
-  max-width: 680px;
   margin: 0 auto;
   font-family: monospace;
   font-size: 14px;
@@ -48,29 +44,18 @@ collapsible-panel pre {
 code {
   word-break: break-word;
 }
-#articleBody blockquote a {
-  box-shadow: 0 2px var(--highlight-pink);
-  margin-right: 6px;
+#headerImageCell img {
+  box-shadow: none;
 }
 </style>
+
+## Introduction
 
 [RoughJS](https://roughjs.com/) is a small-ish (\<9kB) JavaScript graphics library that lets you draw in a *sketchy, hand-drawn-like* style. It lets you draw on `<canvas>` and with `SVG`. This blog post is to address the most common issue filed with RoughJS: **How does it work?**
 
 <figure>
   <img alt="squares" loading="lazy" width="648" height="242" src="/stuff/posts/roughjs/rough1.png">
 </figure>
-
-<blockquote>
-Quick links to sections below:
-<div>
-  <a href="#roughness">Roughness</a>
-  <a href="#lines">Lines</a>
-  <a href="#ellipses">Ellipses</a>
-  <a href="#filling">Filling</a>
-  <a href="#curves">Curves</a>
-  <a href="#svg">SVG Paths</a>
-</div>
-</blockquote>
 
 ## A bit of history
 
