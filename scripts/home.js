@@ -44,6 +44,7 @@ const drawStippled = () => {
   const m = 95 / 24;
   const c = 5 - (6 * m);
   const sampling = (m * sv) + c;
+  stippled.src = '/stuff/face.jpg';
   stippled.sampling = sampling;
 };
 

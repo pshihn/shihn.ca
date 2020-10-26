@@ -214,19 +214,37 @@ header label {
   }
   .textPanel {
     font-size: 1rem;
-    padding: 18px 0 28px;
+    padding: 18px 0 0px;
   }
   section.horizontal {
     flex-direction: column-reverse;
-  }
-  .imagePanel {
-    display: none;
   }
   h1 {
     font-size: 30px;
   }
   header {
     font-size: 1em;
+  }
+  .datePanel {
+    display: flex;
+    max-width: initial;
+    flex: initial;
+    padding: 0 0 16px;
+    font-size: .7em;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .imagePanel {
+    flex: initial;
+    max-width: initial;
+    padding: 18px 0 0;
+  }
+  .imagePanel img {
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    padding: 0;
+    display: block;
   }
 }
 {% endset %}
@@ -241,7 +259,7 @@ header label {
     <div id="facePanel">
       <img id="faceImage" decoding="async" alt="Preet Shihn" loading="lazy" src="/stuff/face.jpg" width="300" height="300">
       <canvas style="display: none;" id="legraCanvas" width="300" height="300"></canvas>
-      <stippled-image style="display: none;" src="/stuff/face.jpg" width="300" height="300" color="#FFFFFF" radius="1"></stippled-image>
+      <stippled-image style="display: none;" width="300" height="300" color="#FFFFFF" radius="1"></stippled-image>
       
       <div id="rangeContainer">
         <input id="range" aria-label="Image resolution" type="range" min="6" max="30" value="18">

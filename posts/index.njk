@@ -127,7 +127,7 @@ h1 {
   }
   .textPanel {
     font-size: 1rem;
-    padding: 18px 0 28px;
+    padding: 18px 0 0px;
   }
   section.horizontal {
     flex-direction: column-reverse;
@@ -135,13 +135,23 @@ h1 {
   .imagePanel {
     flex: initial;
     max-width: initial;
-    padding: 28px 0 0;
+    padding: 18px 0 0;
   }
   .imagePanel img {
     position: relative;
     max-width: 100%;
     height: auto;
     padding: 0;
+    display: block;
+  }
+  .datePanel {
+    display: flex;
+    max-width: initial;
+    flex: initial;
+    padding: 0 0 16px;
+    font-size: .7em;
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 {% endset %}
