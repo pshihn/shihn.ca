@@ -30,9 +30,15 @@
     "url": "https://brickception.xyz/"
   },
   {
+    "title": "Every Color Picker",
+    "description": "The goal of this project is to cover all styles and categories of color pickers, and all color related components for the web.",
+    "image": "/stuff/creations/ecp.png",
+    "url": "https://everycolorpicker.com/"
+  },
+  {
     "title": "RoughJS",
     "description": "A graphics library that lets you draw in a sketchy, hand-drawn-like, style. The library defines primitives to draw lines, curves, arcs, polygons, circles, and ellipses. It also supports drawing SVG paths.",
-    "image": "/stuff/creations/roughjs/rough.jpg",
+    "image": "/stuff/creations/rough.jpg",
     "url": "https://roughjs.com/"
   },
   {
