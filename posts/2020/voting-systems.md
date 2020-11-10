@@ -10,8 +10,8 @@ headerImageHeight: 413
 socialImage: /stuff/posts/media-pool/social.png
 imageWidth: 1280
 imageHeight: 669
-date: 2020-11-11
-tags: ['posts']
+date: 2020-11-10
+tags: ['drafts']
 ---
 
 <style>
