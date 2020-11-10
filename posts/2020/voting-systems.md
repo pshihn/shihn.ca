@@ -11,7 +11,7 @@ socialImage: /stuff/posts/voting-systems/social.jpg
 imageWidth: 1280
 imageHeight: 670
 date: 2020-11-10
-tags: ['drafts']
+tags: ['posts']
 ---
 
 <style>
