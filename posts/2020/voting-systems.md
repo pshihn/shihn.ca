@@ -2,11 +2,11 @@
 layout: post-layout.njk
 title: 'Voting Systems'
 description: "Voting in politics and in software applications isn't as simple as it may seem. Here I discuss designing some basic voting systems and analyze their intricacies, pros, and cons."
-headerBackground: '#091724'
-headerColor: '#FFFFFF'
-headerImage: /stuff/posts/media-pool/cover.png
-headerImageWidth: 463
-headerImageHeight: 353
+headerBackground: '#EDE7F6'
+headerColor: '#000000'
+headerImage: /stuff/posts/voting-systems/cover.jpg
+headerImageWidth: 400
+headerImageHeight: 413
 socialImage: /stuff/posts/media-pool/social.png
 imageWidth: 1280
 imageHeight: 669
@@ -57,11 +57,11 @@ Let's look at an example that we will continue to use in this post. We ask 100 p
 
 <strong class="won">Vanilla has won!</strong> Now if you stare at the numbers a bit, you will find some downsides in declaring Vanilla the winner in this election of the flavors. 
 
-One obvious one is that more votes were cast for a flavor that is not the winning flavor. You could also argue that no flavor should win as none of them reached a majority. 
+An obvious one is that more votes were cast for a flavor that is not the winning flavor. You could also argue that no flavor should win because none of them reached a majority. 
 
-Here *Strawberry* is acting as a **spoiler** — similar to how third-party candidates in US elections can be considered spoilers. Maybe we should have a **_run-off election_** where only Vanilla and Chocolate are considered. Perhaps more people favor Chocolate over Vanilla when Strawberry is out of the picture. (The US state of Georgia has rules akin to this. In the 2020 elections for the senate seats in Georgia, none of the candidates achieved a majority. So run-off elections will be held in January of 2021 with the top two candidates). 
+Here Strawberry is acting as a **spoiler** — similar to how third-party candidates in US elections can be considered spoilers. Maybe we should have a **_run-off election_** where only Vanilla and Chocolate are considered. Perhaps more people favor Chocolate over Vanilla when Strawberry is out of the picture. (The US state of Georgia has rules akin to this. In the 2020 elections for the senate seats in Georgia, none of the candidates achieved a majority. So run-off elections will be held in January of 2021 with the top two candidates). 
 
-The essence of the Plurality voting system is that it does not capture the full spectrum of voters' preferences. If someone voted for Strawberry, it does not tell us how they feel about Vanilla or Chocolate. This system does not truly determine the *'will of the people'*.  
+The essence of the Plurality voting system is that it does not capture the full spectrum of voters' preferences. If someone voted for Strawberry, it does not tell us how they feel about Vanilla or Chocolate.
 
 This system does not truly determine the *'will of the people'*, unless.... there are only two candidates. One of the candidates is guaranteed to receive a majority, barring a tie. So if it were truly a *two-party system* some of the flaws of this system do not matter any more.
 
@@ -92,13 +92,13 @@ Let's compute the points in our example. Vanilla received 45 first places, 10 se
 | Chocolate      | 195     |
 | Strawberry     | 205     |
 
-<strong class="won">Strawberry has won!</strong> Strawberry, which had the fewest votes in the Plurality voting system, has the most points in the Borda ranking system. Totally ridiculous, isn't it? Well maybe, but maybe not. Strawberry did receive the fewest third-place votes. And 75% of the people had Strawberry as their second choice.  Perhaps Strawbery does deserve to win!
+<strong class="won">Strawberry has won!</strong> Strawberry, which had the fewest votes in the Plurality voting system, has the most points in the Borda ranking system. Totally ridiculous, isn't it? Well maybe, but maybe not. Strawberry did receive the fewest third-place votes. And 75% of the people had Strawberry as their second choice.  Perhaps Strawberry does deserve to win!
 
 ## Instant Runoff Voting
 
 Let's take a look at a different model of interpreting the ranked voting data. In an Instant Runoff, the candidate with the fewest first-place votes is eliminated, and its votes are distributed to the second choice. This is then repeated until we have one candidate left standing.
 
-Some consider this model of iterative elimination a bit confusing and thereby not practical. But it's getting wide adoption including political elections (San Francisco and Oakland city elections, for example). It is also used to decide the winner of the Best Picture Academy Award.
+Some consider this model of iterative elimination a bit confusing and thereby not practical. But it's getting wide adoption, including in political elections (San Francisco and Oakland city elections, for example). It is also used to decide the winner of the Best Picture Academy Award.
 
 Let's apply this to our current example.
 
