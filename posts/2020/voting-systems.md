@@ -7,9 +7,9 @@ headerColor: '#000000'
 headerImage: /stuff/posts/voting-systems/cover.jpg
 headerImageWidth: 400
 headerImageHeight: 413
-socialImage: /stuff/posts/media-pool/social.png
+socialImage: /stuff/posts/voting-systems/social.jpg
 imageWidth: 1280
-imageHeight: 669
+imageHeight: 670
 date: 2020-11-10
 tags: ['drafts']
 ---
