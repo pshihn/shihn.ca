@@ -9,6 +9,10 @@ code[class*="language-"] {
   background: initial;
   padding: initial;
 }
+footer {
+  --footer-bg: {{ headerBackground }};
+  --footer-fg: {{ headerColor }};
+}
 header {
   background: {{ headerBackground }};
   color: {{ headerColor }};
