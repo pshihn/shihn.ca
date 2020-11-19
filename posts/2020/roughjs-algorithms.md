@@ -4,6 +4,7 @@ title: How to emulate hand-drawn shapes / Algorithms behind RoughJS
 description: A dive into graphics algorithms used in RoughJS - A graphics library that lets you draw in a sketchy, hand-drawn-like, style.
 headerBackground: '#D1E0ED'
 headerColor: '#000000'
+titleColor: '#40586E'
 headerImage: /stuff/posts/roughjs/cover.png
 headerImageWidth: 480
 headerImageHeight: 480

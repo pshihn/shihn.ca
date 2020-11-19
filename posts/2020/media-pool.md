@@ -4,6 +4,7 @@ title: 'Autoplaying back-to-back videos on the web using a Media Pool'
 description: 'When autoplaying a queue of videos, a media-pool can be used to overcome browser restrictions related to auto-muting. Reusing video elements is also more performant, especially on mobile devices.'
 headerBackground: '#091724'
 headerColor: '#FFFFFF'
+titleColor: '#1C4870'
 headerImage: /stuff/posts/media-pool/cover.png
 headerImageWidth: 463
 headerImageHeight: 353

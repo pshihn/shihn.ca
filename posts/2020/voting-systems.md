@@ -4,6 +4,7 @@ title: 'Voting Systems'
 description: "Voting in politics and in software applications isn't as simple as it may seem. Here I discuss designing some basic voting systems and analyze their intricacies, pros, and cons."
 headerBackground: '#EDE7F6'
 headerColor: '#000000'
+titleColor: '#5C4B75'
 headerImage: /stuff/posts/voting-systems/cover.jpg
 headerImageWidth: 400
 headerImageHeight: 413

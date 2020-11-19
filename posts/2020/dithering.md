@@ -4,6 +4,7 @@ title: Reducing Colors In An Image ⇢ Dithering
 description: Explore how dithering can help adopt different color palettes, while maintaining the essence of the image.
 headerBackground: '#0F331D'
 headerColor: '#ffffff'
+titleColor: '#258048'
 headerImage: /stuff/posts/dithering/monalisacover.jpg
 headerImageWidth: 500
 headerImageHeight: 505

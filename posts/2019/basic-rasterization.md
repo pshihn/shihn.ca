@@ -4,6 +4,7 @@ title: Basic rasterization / Draw with emojis
 description: Discovering basic algorithms to render lines, shapes, curves, and filling them.
 headerBackground: '#475D6B'
 headerColor: '#ffffff'
+titleColor: '#2F6384'
 headerImage: /stuff/posts/rasterization/cover.png
 headerImageWidth: 675
 headerImageHeight: 387

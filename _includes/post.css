@@ -64,6 +64,7 @@ main {
   width: 93.3333333333%;
   margin: 0 auto;
   position: relative;
+  --title-color: {{ titleColor }};
 }
 section.content {
   max-width: 50%;
@@ -78,7 +79,7 @@ h2 {
   margin-bottom: .7rem;
   font-size: 2rem;
   font-weight: 400;
-  color: #000;
+  color: var(--title-color, #000);
 }
 h3 {
   line-height: 1.35;
@@ -88,7 +89,7 @@ h3 {
   margin-bottom: .7rem;
   font-size: 1.7rem;
   font-weight: 400;
-  color: #000;
+  color: var(--title-color, #000);
 }
 figure {
   margin: 2.5rem 0;
