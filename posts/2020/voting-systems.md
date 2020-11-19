@@ -17,7 +17,7 @@ tags: ['posts']
 <style>
 table {
   color: #B71C1C;
-  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif;
+  font-family: var(--sans);
   letter-spacing: 0.5px;
   font-size: 0.7em;
   width: 100%;
