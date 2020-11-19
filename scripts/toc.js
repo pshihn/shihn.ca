@@ -24,6 +24,11 @@ class TOCElement extends HTMLElement {
         opacity: 0.6;
         transition: opacity 0.18s ease;
       }
+      li.selected {
+        color: var(--title-color,#000);
+        opacity: 1;
+        font-weight: 600;
+      }
       label {
         margin-bottom: 8px;
         opacity: 0.6;
@@ -61,9 +66,53 @@ class TOCElement extends HTMLElement {
         const node = this.linkMap.get(li);
         if (node) {
           node.scrollIntoView({ block: "start", inline: "nearest", behavior: 'smooth' });
+          setTimeout(() => this._resetHighlight(), 500);
+          setTimeout(() => this._resetHighlight(), 1000);
         }
       });
+
+      const observer = new IntersectionObserver((entries) => {
+        this._resetHighlight();
+      }, {
+        rootMargin: '0px 0px -65% 0px'
+      });
+      observer.observe(h);
     });
+  }
+
+  _resetHighlight() {
+    if (this._resetPending) {
+      return;
+    }
+    this._resetPending = true;
+    setTimeout(() => {
+      this._resetPending = false;
+      const cutOff = window.innerHeight * 0.35;
+      const negatives = [];
+      const positives = [];
+      for (const hNode of this.reverseMap.keys()) {
+        const top = hNode.getBoundingClientRect().top
+        if (top < cutOff) {
+          if (top < 0) {
+            negatives.push({ hNode, top });
+          } else {
+            positives.push({ hNode, top });
+          }
+        }
+        this.reverseMap.get(hNode).classList.remove('selected');
+      }
+      if (positives.length) {
+        positives.sort((a, b) => {
+          return a.top - b.top;
+        });
+        this.reverseMap.get(positives[0].hNode).classList.add('selected');
+      } else if (negatives.length) {
+        negatives.sort((a, b) => {
+          return b.top - a.top;
+        });
+        this.reverseMap.get(negatives[0].hNode).classList.add('selected');
+      }
+    }, 200);
   }
 
   _createItem(text) {

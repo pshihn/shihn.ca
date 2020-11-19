@@ -148,7 +148,8 @@ table-of-contents {
 
 @media(max-width: 960px) {
   section.content {
-    max-width: 75%;
+    max-width: 725px;
+    margin: 0 auto;
   }
   figure img {
     margin: 0 2vw 0 0;
@@ -171,6 +172,7 @@ table-of-contents {
   section.content {
     max-width: 100%;
     padding: 0;
+    margin: 0;;
   }
   h1 {
     font-size: 2.1rem;
