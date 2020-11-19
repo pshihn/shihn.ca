@@ -66,6 +66,8 @@ class TOCElement extends HTMLElement {
         const node = this.linkMap.get(li);
         if (node) {
           node.scrollIntoView({ block: "start", inline: "nearest", behavior: 'smooth' });
+          setTimeout(() => this._resetHighlight(), 500);
+          setTimeout(() => this._resetHighlight(), 1000);
         }
       });
 
