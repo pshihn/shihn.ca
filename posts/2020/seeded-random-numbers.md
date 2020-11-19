@@ -4,6 +4,7 @@ title: 'Need for Seed: Taming Randomness in a Pseudorandom World'
 description: When to used a seeded pseudorandom number generator, and things to consider when you do.
 headerBackground: '#E0A4B7'
 headerColor: '#000000'
+titleColor: '#612A3B'
 headerImage: /stuff/posts/taming-randomness/cover.jpg
 headerImageWidth: 456
 headerImageHeight: 481

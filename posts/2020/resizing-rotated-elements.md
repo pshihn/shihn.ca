@@ -4,6 +4,7 @@ title: 'Resizing Rotated Elements'
 description: Visual editors usually allow resizing and rotation of elements. Applying both transforms can be a little tricky. This post explores an algorithm to implement this feature.
 headerBackground: '#e6e3df'
 headerColor: '#000000'
+titleColor: '#665744'
 headerImage: /stuff/posts/resizing-rotated-elements/rot2.png
 headerImageWidth: 607
 headerImageHeight: 412

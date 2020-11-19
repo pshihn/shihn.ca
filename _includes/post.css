@@ -9,11 +9,15 @@ code[class*="language-"] {
   background: initial;
   padding: initial;
 }
+footer {
+  --footer-bg: {{ headerBackground }};
+  --footer-fg: {{ headerColor }};
+}
 header {
   background: {{ headerBackground }};
   color: {{ headerColor }};
   min-height: 40vh;
-  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif;
+  font-family: var(--sans);
   font-size: 1.5rem;
   font-weight: 200;
   letter-spacing: 1px;
@@ -60,6 +64,7 @@ main {
   width: 93.3333333333%;
   margin: 0 auto;
   position: relative;
+  --title-color: {{ titleColor }};
 }
 section.content {
   max-width: 50%;
@@ -69,22 +74,22 @@ section.content {
 h2 {
   line-height: 1.35;
   letter-spacing: 1px;
-  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif;
+  font-family: var(--sans);
   margin-top: 2.1rem;
   margin-bottom: .7rem;
   font-size: 2rem;
   font-weight: 400;
-  color: #000;
+  color: var(--title-color, #000);
 }
 h3 {
   line-height: 1.35;
   letter-spacing: 1px;
-  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif;
+  font-family: var(--sans);
   margin-top: 1rem;
   margin-bottom: .7rem;
   font-size: 1.7rem;
   font-weight: 400;
-  color: #000;
+  color: var(--title-color, #000);
 }
 figure {
   margin: 2.5rem 0;

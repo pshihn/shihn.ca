@@ -1,7 +1,7 @@
 footer {
-  background: var(--darkest);
-  color: #FFFFFF;
-  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Ubuntu, Roboto, Noto, "Segoe UI", Arial, sans-serif;
+  background: var(--footer-bg, var(--darkest));
+  color: var(--footer-fg, #ffffff);
+  font-family: var(--sans);
   line-height: 1;
   font-size: 18px;
   font-weight: 400;
