@@ -24,7 +24,7 @@
     "@11ty/eleventy-plugin-rss": "^1.0.9",
     "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.4",
     "clean-css": "^4.2.3",
-    "luxon": "^1.25.0",
+    "luxon": "^1.28.1",
     "rollup": "^2.33.1",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^7.0.2"
